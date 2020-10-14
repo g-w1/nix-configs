@@ -111,6 +111,7 @@ fi
 	  "polybar/config".source = ./polybar;
 	  "nvim/init.vim".source = ./init.vim;
     "input/inputrc".source = ./inputrc;
+    "alacritty/alacritty.yml".source = ./alacritty.yml;
     "zathura/zathurarc".source = ./zathurarc;
     "bspwm/bspwmrc".source = ./bspwmrc;
     "sxhkd/sxhkdrc".source = ./sxhkdrc;
