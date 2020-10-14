@@ -27,4 +27,7 @@
     userEmail = "jacoblevgw@gmail.com";
     userName = "g-w1";
   };
+  xdg.configFile = {
+  "tmux/.tmux.conf".source = ./tmux.conf;
+  };
 }
