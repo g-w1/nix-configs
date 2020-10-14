@@ -6,6 +6,7 @@ programs.home-manager.enable = true;
     # cli tools
     exa
     bat
+    ripgrep
 
 
     # Development
@@ -13,8 +14,8 @@ programs.home-manager.enable = true;
     tmux
     fzf
     nodejs
-
     rustup
+    alacritty
 
     # Media
     youtube-dl
@@ -91,5 +92,7 @@ programs.home-manager.enable = true;
 	  "nvim/init.vim".source = ./init.vim;
     "input/inputrc".source = ./inputrc;
     "zathura/zathurarc".source = ./zathurarc;
+    "bspwm/bspwmrc".source = ./bspwmrc;
+    "sxhkd/sxhkdrc".source = ./sxhkdrc;
   };
 }
