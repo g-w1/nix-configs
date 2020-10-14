@@ -19,6 +19,7 @@ programs.home-manager.enable = true;
     ruby
 
     # Media
+    brave
     youtube-dl
     imagemagick
     sxiv
@@ -26,11 +27,14 @@ programs.home-manager.enable = true;
     xclip
     xsel
     zathura
+    nerdfonts
+    slock
 
 
     # Overview
     htop
     neofetch
+
   ];
   programs.bash = {
     enable = true;
@@ -83,6 +87,7 @@ programs.home-manager.enable = true;
 
   home.file = {
   ".tmux.conf".source = ./tmux.conf;
+  ".xinitrc".source = ./xinitrc;
   ".profile".source = ./profile;
   ".local/bin".source = ./scripts;
   ".local/bin".recursive = true;
