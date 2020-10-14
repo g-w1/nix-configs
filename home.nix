@@ -16,6 +16,7 @@ programs.home-manager.enable = true;
     nodejs
     rustup
     alacritty
+    ruby
 
     # Media
     youtube-dl

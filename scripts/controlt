@@ -1,0 +1,9 @@
+#!/bin/sh
+curdir=`pwd`
+cd `git rev-parse --show-toplevel`
+file=$(git ls-files|fzf)
+case $? in
+  130) ;;
+  *) nvim $file;;
+esac
+cd $curdir
