@@ -1,6 +1,11 @@
 #!/bin/sh
 curdir=`pwd`
-cd `git rev-parse --show-toplevel`
+dir=`git rev-parse --show-toplevel 2>/dev/null`
+case $? in
+  0);;
+  *) exit;;
+esac
+cd $dir
 file=$(git ls-files|fzf)
 case $? in
   130) ;;
