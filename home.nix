@@ -17,6 +17,7 @@ programs.home-manager.enable = true;
     alacritty
     ruby
 
+
     # Media
     brave
     youtube-dl
@@ -29,13 +30,18 @@ programs.home-manager.enable = true;
     nerdfonts
     slock
     ffmpeg
+    feh
 
 
     # Overview
     htop
     ## flex
     neofetch
-
+    # other
+    dmenu
+    killall
+    polybar
+    sxhkd
   ];
   programs.bash = {
     enable = true;

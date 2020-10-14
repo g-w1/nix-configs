@@ -12,7 +12,7 @@ env:
   # available, otherwise `xterm-256color` is used.
   TERM: xterm-256color
 
-#window:
+window:
   # Window dimensions (changes require restart)
   #
   # Specified in number of columns/lines, not pixels.
@@ -38,18 +38,18 @@ env:
   #  y: 0
 
   # Spread additional padding evenly around the terminal content.
-  #dynamic_padding: false
+  dynamic_padding: true
 
   # Window decorations
   #
   # Values for `decorations`:
   #     - full: Borders and title bar
-  #     - none: Neither borders nor title bar
+      # - none: Neither borders nor title bar
   #
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
-  #decorations: full
+  decorations: none
 
   # Startup Mode (changes require restart)
   #
@@ -66,7 +66,7 @@ env:
   #title: Alacritty
 
   # Allow terminal applications to change Alacritty's window title.
-  #dynamic_title: true
+  dynamic_title: true
 
   # Window class (Linux/BSD only):
   #class:
@@ -79,7 +79,7 @@ env:
   #
   # Override the variant of the GTK theme. Commonly supported values are `dark` and `light`.
   # Set this to `None` to use the default theme variant.
-  #gtk_theme_variant: None
+  gtk_theme_variant: None
 
 #scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -148,7 +148,7 @@ font:
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
-  # increasing `y` moves the glyph uward.
+  # increasing `y` moves the glyph upward.
   #glyph_offset:
   #  x: 0
   #  y: 0
@@ -222,15 +222,31 @@ colors:
     #  foreground: '#1d1f21'
 
   # Normal colors
-  #normal:
-  #  black:   '#1d1f21'
-  #  red:     '#cc6666'
-  #  green:   '#b5bd68'
-  #  yellow:  '#f0c674'
-  #  blue:    '#81a2be'
-  #  magenta: '#b294bb'
-  #  cyan:    '#8abeb7'
-  #  white:   '#c5c8c6'
+  normal:
+    # black:   '#1d1f21'
+    # red:     '#cc6666'
+    # green:   '#b5bd68'
+    # yellow:  '#f0c674'
+    # blue:    '#81a2be'
+    # magenta: '#b294bb'
+    # cyan:    '#8abeb7'
+    # white:   '#c5c8c6'
+   black:   '#131415'
+   red:     '#864343'
+   green:   '#777c44'
+   yellow:  '#9e824c'
+   blue:    '#556a7d'
+   magenta: '#75617b'
+   cyan:    '#5b7d78'
+   white:   '#828482'
+   # black:   '#666666'
+   # red:     '#d54e53'
+   # green:   '#b9ca4a'
+   # yellow:  '#e7c547'
+   # blue:    '#7aa6da'
+   # magenta: '#c397d8'
+   # cyan:    '#70c0b1'
+   # white:   '#eaeaea'
 
   # Bright colors
   #bright:
@@ -306,7 +322,7 @@ bell:
   #     program: notify-send
   #     args: ["Hello, World!"]
   #
-  #command: None
+  #command: one
 
 # Background opacity
 #
