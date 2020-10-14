@@ -8,7 +8,6 @@ programs.home-manager.enable = true;
     bat
     ripgrep
 
-
     # Development
     neovim
     tmux
@@ -29,10 +28,12 @@ programs.home-manager.enable = true;
     zathura
     nerdfonts
     slock
+    ffmpeg
 
 
     # Overview
     htop
+    ## flex
     neofetch
 
   ];
@@ -75,7 +76,15 @@ programs.home-manager.enable = true;
 	fd=''fd --no-ignore'';
 	t=''tmux'';
 	ta=''tmux a'';
+  cfnix=''cd ~/.config/nixpkgs&&nvim home.nix'';
 };
+initExtra = ''if [ -n "$TMUX" ]; then
+	tmux set -a window-active-style "bg=#1C1C1C"
+	tmux set -a window-style "bg=#282828"
+	# tmux set -g pane-active-border-style "bg=#1C1C1C"
+	# tmux set -g pane-border-style "bg=#282828"
+fi
+'';
   };
 
   programs.git = {
@@ -84,6 +93,11 @@ programs.home-manager.enable = true;
     userName = "g-w1";
   };
   programs.tmux.enable = true;
+
+  # programs.autojump = { TODO why not work
+  #   enable = true;
+  #   enableBashIntegration = true;
+  # };
 
   home.file = {
   ".tmux.conf".source = ./tmux.conf;
