@@ -17,7 +17,6 @@ programs.home-manager.enable = true;
     alacritty
     ruby
 
-
     # Media
     brave
     youtube-dl
@@ -31,7 +30,10 @@ programs.home-manager.enable = true;
     slock
     ffmpeg
     feh
-
+    mpv
+    pulsemixer
+    pamixer
+    flameshot
 
     # Overview
     htop
@@ -42,6 +44,7 @@ programs.home-manager.enable = true;
     killall
     polybar
     sxhkd
+    arandr
   ];
   programs.bash = {
     enable = true;
@@ -84,11 +87,10 @@ programs.home-manager.enable = true;
 	ta=''tmux a'';
   cfnix=''cd ~/.config/nixpkgs&&nvim home.nix'';
 };
-initExtra = ''if [ -n "$TMUX" ]; then
+initExtra = ''
+if [ -n "$TMUX" ]; then
 	tmux set -a window-active-style "bg=#1C1C1C"
 	tmux set -a window-style "bg=#282828"
-	# tmux set -g pane-active-border-style "bg=#1C1C1C"
-	# tmux set -g pane-border-style "bg=#282828"
 fi
 '';
   };

@@ -66,7 +66,7 @@ font-3 = Symbola:pixelsize=9;1
 modules-left = bspwm xwindow
 ; modules-center =
 ; modules-right = mpd volume mutt-wizard cpu memory wlan date filesystem powermenu
-modules-right = mpd volume cpu memory wlan date filesystem powermenu
+modules-right = mpd volume cpu memory wlan date filesystem battery
 
 tray-position = right
 tray-padding = 0
@@ -116,7 +116,7 @@ font-3 = Symbola:pixelsize=9;1
 modules-left = bspwm xwindow
 ;modules-center =
 ; modules-right = mpd volume mutt-wizard cpu memory wlan date filesystem powermenu
-modules-right = mpd volume cpu memory wlan date filesystem powermenu
+modules-right = mpd volume cpu memory wlan date filesystem battery
 
 tray-position = right
 tray-padding = 0
@@ -165,7 +165,7 @@ font-3 = Symbola:pixelsize=9;1
 modules-left = bspwm xwindow
 ;modules-center =
 ; modules-right = mpd volume mutt-wizard newssec cpu memory wlan date filesystem powermenu
-modules-right = mpd volume newssec cpu memory wlan date filesystem powermenu
+modules-right = mpd volume newssec cpu memory wlan date filesystem battery
 
 tray-position = right
 tray-padding = 0
