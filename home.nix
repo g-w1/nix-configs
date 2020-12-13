@@ -35,9 +35,7 @@ programs.home-manager.enable = true;
 
     # Overview
     htop
-    ## flex
     neofetch
-    # other
     dmenu
     killall
     polybar
@@ -82,16 +80,23 @@ programs.home-manager.enable = true;
 	fd=''fd --no-ignore'';
 	t=''tmux'';
 	ta=''tmux a'';
-  cfnix=''cd ~/.config/nixpkgs&&nvim home.nix'';
+	cfnix=''cd ~/.config/nixpkgs&&nvim home.nix'';
 };
-initExtra = ''if [ -n "$TMUX" ]; then
-	tmux set -a window-active-style "bg=#1C1C1C"
-	tmux set -a window-style "bg=#282828"
-	# tmux set -g pane-active-border-style "bg=#1C1C1C"
-	# tmux set -g pane-border-style "bg=#282828"
-fi
+
+initExtra = ''
+	if [ -n "$TMUX" ]; then
+		tmux set -a window-active-style "bg=#1C1C1C"
+		tmux set -a window-style "bg=#282828"
+		# tmux set -g pane-active-border-style "bg=#1C1C1C"
+		# tmux set -g pane-border-style "bg=#282828"
+	fi
+
+	dev() {
+	  cd ~/dev/$1
+	  nix-shell ~/env/$1.nix
+	}
 '';
-  };
+};
 
   programs.git = {
     enable = true;
@@ -100,26 +105,21 @@ fi
   };
   programs.tmux.enable = true;
 
-  # programs.autojump = { TODO why not work
-  #   enable = true;
-  #   enableBashIntegration = true;
-  # };
-
   home.file = {
-  ".tmux.conf".source = ./tmux.conf;
-  ".xinitrc".source = ./xinitrc;
-  ".profile".source = ./profile;
-  ".local/bin".source = ./scripts;
-  ".local/bin".recursive = true;
+	  ".tmux.conf".source = ./tmux.conf;
+	  ".xinitrc".source = ./xinitrc;
+	  ".profile".source = ./profile;
+	  ".local/bin".source = ./scripts;
+	  ".local/bin".recursive = true;
   };
 
   xdg.configFile = {
 	  "polybar/config".source = ./polybar;
 	  "nvim/init.vim".source = ./init.vim;
-    "input/inputrc".source = ./inputrc;
-    "alacritty/alacritty.yml".source = ./alacritty.yml;
-    "zathura/zathurarc".source = ./zathurarc;
-    "bspwm/bspwmrc".source = ./bspwmrc;
-    "sxhkd/sxhkdrc".source = ./sxhkdrc;
+	  "input/inputrc".source = ./inputrc;
+	  "alacritty/alacritty.yml".source = ./alacritty.yml;
+	  "zathura/zathurarc".source = ./zathurarc;
+	  "bspwm/bspwmrc".source = ./bspwmrc;
+	  "sxhkd/sxhkdrc".source = ./sxhkdrc;
   };
 }

@@ -48,100 +48,14 @@ export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
 export QT_QPA_PLATFORMTHEME="gtk2"	# Have QT use gtk2 theme.
 export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 
-# This is the list for lf icons:
-export LF_ICONS="di=📁:\
-fi=📃:\
-tw=🤝:\
-ow=📂:\
-ln=⛓:\
-or=❌:\
-ex=🎯:\
-*.txt=✍:\
-*.mom=✍:\
-*.me=✍:\
-*.ms=✍:\
-*.png=🖼:\
-*.ico=🖼:\
-*.jpg=📸:\
-*.jpeg=📸:\
-*.gif=🖼:\
-*.svg=🗺:\
-*.xcf=🖌:\
-*.html=🌎:\
-*.xml=📰:\
-*.gpg=🔒:\
-*.css=🎨:\
-*.pdf=📚:\
-*.djvu=📚:\
-*.epub=📚:\
-*.csv=📓:\
-*.xlsx=📓:\
-*.tex=📜:\
-*.md=📘:\
-*.r=📊:\
-*.R=📊:\
-*.rmd=📊:\
-*.Rmd=📊:\
-*.mp3=🎵:\
-*.opus=🎵:\
-*.ogg=🎵:\
-*.m4a=🎵:\
-*.flac=🎼:\
-*.mkv=🎥:\
-*.mp4=🎥:\
-*.webm=🎥:\
-*.mpeg=🎥:\
-*.avi=🎥:\
-*.zip=📦:\
-*.rar=📦:\
-*.7z=📦:\
-*.tar.gz=📦:\
-*.AppImage=📦:\
-*.z64=🎮:\
-*.v64=🎮:\
-*.n64=🎮:\
-*.1=ℹ:\
-*.nfo=ℹ:\
-*.info=ℹ:\
-*.log=📙:\
-*.iso=📀:\
-*.img=📀:\
-*.bib=🎓:\
-*.ged=👪:\
-*.part=💔:\
-*.crdownload=💔:\
-*.torrent=🔽:\
-"
-
-# [ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ] && shortcuts >/dev/null 2>&1 &
-
-# Start graphical server on tty1 if not already running.
-# [ "$(tty)" = "/dev/tty1" ] && ! ps -e | grep -qw Xorg && exec startx
 # monitors
-# Switch escape and caps if tty and no passwd required:
-# sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/larbs/ttymaps.kmap 2>/dev/null
+case $(hostname) in 
+	dell) 
+		export MONITOR="DP-3"
+		;;
+esac
 
 export PATH="/home/jacob/.local/share/cargo/bin:$PATH"
 export PATH="/home/jacob/.gem/ruby/2.7.0/bin:$PATH"
-# if [ "$TERM" = "linux" ]; then
-#     echo -en "\e]P0222222" #black
-#     echo -en "\e]P8222222" #darkgrey
-#     echo -en "\e]P1803232" #darkred
-#     echo -en "\e]P9982b2b" #red
-#     echo -en "\e]P25b762f" #darkgreen
-#     echo -en "\e]PA89b83f" #green
-#     echo -en "\e]P3aa9943" #brown
-#     echo -en "\e]PBefef60" #yellow
-#     echo -en "\e]P4324c80" #darkblue
-#     echo -en "\e]PC2b4f98" #blue
-#     echo -en "\e]P5706c9a" #darkmagenta
-#     echo -en "\e]PD826ab1" #magenta
-#     echo -en "\e]P692b19e" #darkcyan
-#     echo -en "\e]PEa1cdcd" #cyan
-#     echo -en "\e]P7ffffff" #lightgrey
-#     echo -en "\e]PFdedede" #white
-
-#     FBTERM=1 exec fbterm
-# fi
 export PATH=~/.npm-global/bin:$PATH
 export PATH=~/Nextcloud/code/other/zig/build/bin:$PATH
