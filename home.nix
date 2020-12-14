@@ -43,6 +43,7 @@ programs.home-manager.enable = true;
     pamixer
     flameshot
     newsboat
+    zulip
 
     # Overview
     htop

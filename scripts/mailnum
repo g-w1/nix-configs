@@ -1,0 +1,25 @@
+#! /usr/bin/env nix-shell
+#! nix-shell -i python3 -p python3
+
+import imaplib
+
+num = int(input())
+sum = 0
+
+for i in range(num):
+    mail = imaplib.IMAP4_SSL('imap.gmail.com')
+    mail.login(input(), input())
+    mail.list()
+
+    mail.select('inbox')
+
+    _, data = mail.search(None, '(UNSEEN)')
+
+    # Print the count of all unread messages
+    inboxfiles = len(data[0].split())
+    sum += inboxfiles
+
+    mail.close()
+
+    mail.logout()
+print(" " + str(sum))
