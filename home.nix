@@ -1,8 +1,13 @@
 { config, pkgs, ... }:
 
-{
+let mypolybar = pkgs.polybar.override {
+    mpdSupport = true;
+    pulseSupport = true;
+  };
+in
+  {
 programs.home-manager.enable = true;
-  home.packages = with pkgs; [
+  home.packages = with pkgs;  [
     # cli tools
     exa
     bat
@@ -19,6 +24,7 @@ programs.home-manager.enable = true;
 
     # Media
     brave
+    firefox
     youtube-dl
     imagemagick
     sxiv
@@ -34,16 +40,18 @@ programs.home-manager.enable = true;
     pulsemixer
     pamixer
     flameshot
+    newsboat
 
     # Overview
     htop
     neofetch
     dmenu
     killall
-    polybar
     sxhkd
     arandr
   ];
+
+
   programs.bash = {
     enable = true;
   shellAliases = {
@@ -76,6 +84,7 @@ programs.home-manager.enable = true;
 	sdn=''sudo shutdown -h now'' ;
 	doas=''sudo'';
 	du=''du -h'' ;
+	df=''df -h'' ;
 	e =''exit'' ;
 	c =''clear'' ;
 	vim=''nvim'';
@@ -105,6 +114,7 @@ initExtra = ''
     userEmail = "jacoblevgw@gmail.com";
     userName = "g-w1";
   };
+
   programs.tmux.enable = true;
 
   home.file = {
@@ -116,12 +126,21 @@ initExtra = ''
   };
 
   xdg.configFile = {
-	  "polybar/config".source = ./polybar;
+	  # "polybar/config".source = ./polybar;
 	  "nvim/init.vim".source = ./init.vim;
 	  "input/inputrc".source = ./inputrc;
 	  "alacritty/alacritty.yml".source = ./alacritty.yml;
 	  "zathura/zathurarc".source = ./zathurarc;
 	  "bspwm/bspwmrc".source = ./bspwmrc;
 	  "sxhkd/sxhkdrc".source = ./sxhkdrc;
+  };
+
+  services.polybar = {
+    enable = true;
+    package = mypolybar;
+    config = ./polybar;
+    script = ''
+    launch_polybar&
+    '';
   };
 }

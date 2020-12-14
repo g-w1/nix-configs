@@ -8,7 +8,7 @@ export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="alacritty"
-export BROWSER="brave"
+export BROWSER="firefox"
 export READER="zathura"
 
 # ~/ Clean-up:
@@ -49,8 +49,8 @@ export QT_QPA_PLATFORMTHEME="gtk2"	# Have QT use gtk2 theme.
 export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 
 # monitors
-case $(hostname) in 
-	dell) 
+case $(hostname) in
+	dell)
 		export MONITOR="DP-3"
 		;;
 esac

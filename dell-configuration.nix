@@ -20,8 +20,8 @@
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.enp0s25.useDHCP = true;
-  networking.interfaces.wlp3s0.useDHCP = true;
+  networking.interfaces.eno1.useDHCP = true;
+  networking.interfaces.wlp2s0.useDHCP = true;
   networking.networkmanager.enable = true;
 
   # Select internationalisation properties.
@@ -77,7 +77,7 @@
   # enable no displaymanager
   services.xserver.displayManager.startx.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’. 
+  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jacob = {
     isNormalUser = true;
     extraGroups = [ "wheel" "video" ]; # Enable ‘sudo’ for the user.
@@ -89,11 +89,10 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "20.03"; # Did you read the comment?
- 
+  system.stateVersion = "20.09"; # Did you read the comment?
+
   # add slock to the oom killers so I can actually use
   security.wrappers.slock.source = "${pkgs.slock.out}/bin/slock";
 
 
 }
-
