@@ -55,6 +55,7 @@ case $(hostname) in
 		;;
 esac
 
+export NIXPKGS_ALLOW_UNFREE=1
 export PATH="/home/jacob/.local/share/cargo/bin:$PATH"
 export PATH="/home/jacob/.gem/ruby/2.7.0/bin:$PATH"
 export PATH=~/.npm-global/bin:$PATH

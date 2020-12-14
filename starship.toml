@@ -1,0 +1,13 @@
+add_newline = false
+[python]
+disabled=true
+[zig]
+disabled=true
+[rust]
+disabled=true
+[cmake]
+disabled=true
+[directory]
+truncation_length=100
+read_only=" 🔒"
+read_only_style="red"

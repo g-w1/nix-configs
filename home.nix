@@ -12,6 +12,8 @@ programs.home-manager.enable = true;
     exa
     bat
     ripgrep
+    tealdeer
+    starship
 
     # Development
     neovim
@@ -80,7 +82,6 @@ programs.home-manager.enable = true;
 	diff=''diff --color=auto'' ;
 	ka=''killall'' ;
 	sl=''ls'' ;
-	YT=''youtube-viewer -C -7'' ;
 	sdn=''sudo shutdown -h now'' ;
 	doas=''sudo'';
 	du=''du -h'' ;
@@ -106,6 +107,9 @@ initExtra = ''
 	  cd ~/dev/$1
 	  nix-shell ~/env/$1.nix
 	}
+
+  # for starship prompt
+  eval "$(starship init bash)"
 '';
 };
 
@@ -123,6 +127,7 @@ initExtra = ''
 	  ".profile".source = ./profile;
 	  ".local/bin".source = ./scripts;
 	  ".local/bin".recursive = true;
+	  ".config/starship.toml".source = ./starship.toml;
   };
 
   xdg.configFile = {

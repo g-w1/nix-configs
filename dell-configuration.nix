@@ -14,6 +14,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+
   networking.hostName = "dell"; # Define your hostname, change this
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
@@ -77,7 +78,7 @@
   # enable no displaymanager
   services.xserver.displayManager.startx.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account. Don't forget to set a password with ‘passwd’. 
   users.users.jacob = {
     isNormalUser = true;
     extraGroups = [ "wheel" "video" ]; # Enable ‘sudo’ for the user.
@@ -90,9 +91,16 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "20.09"; # Did you read the comment?
-
+ 
   # add slock to the oom killers so I can actually use
   security.wrappers.slock.source = "${pkgs.slock.out}/bin/slock";
 
+  # unfree software
+  nixpkgs.config.allowUnfree = true;
+  networking.extraHosts = 
+  ''
+  10.0.1.34 bruh
+  '';
 
 }
+
