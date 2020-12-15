@@ -77,13 +77,6 @@
 
   # enable no displaymanager
   services.xserver.displayManager.startx.enable = true;
-   # cron
-   services.cron = {
-   enable = true;
-    systemCronJobs = [
-      "*/1 * * * * jacob /bin/sh -c 'cat /etc/secret_mail | /home/jacob/.config/nixpkgs/scripts/mailnum > /tmp/mailnum'"
-    ];
-  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’. 
   users.users.jacob = {

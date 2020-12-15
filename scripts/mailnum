@@ -22,4 +22,4 @@ for i in range(num):
     mail.close()
 
     mail.logout()
-print(" " + str(sum))
+print("  " + str(sum))

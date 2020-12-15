@@ -196,8 +196,8 @@ interval = 5
 [module/mutt-wizard]
 
 type = custom/script
-exec = cat /tmp/mailnum 2>/dev/null
-interval = 5
+exec = cat /etc/secret_mail | /home/jacob/.local/bin/mailnum
+interval = 15
 format-underline = ${colors.red}
 
 

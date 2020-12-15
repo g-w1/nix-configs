@@ -54,8 +54,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " vim tmux
 Plug 'christoomey/vim-tmux-navigator'
-" conceal
-Plug 'g-w1/vim-conceal'
 call plug#end()
 """""""""""""""""""""""""""""""""""""""""""' " stuffff for plugins
 set completeopt=noinsert,menuone,noselect
