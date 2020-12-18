@@ -59,6 +59,9 @@ programs.home-manager.enable = true;
     killall
     sxhkd
     arandr
+
+    # misc
+    dconf
   ];
 
 
@@ -123,10 +126,26 @@ programs.home-manager.enable = true;
     '';
   };
 
+  gtk = {
+    enable = true;
+    theme = {
+      package = pkgs.gnome3.gnome_themes_standard;
+      name = "Adwaita Dark";
+    };
+  };
+
   programs.git = {
     enable = true;
     userEmail = "jacoblevgw@gmail.com";
     userName = "g-w1";
+    extraConfig = {
+      credential = {
+        helper="cache --timeout=36000";
+      };
+      pull = {
+        rebase = false;
+      };
+    };
   };
 
   programs.tmux.enable = true;

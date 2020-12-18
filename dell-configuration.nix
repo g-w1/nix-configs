@@ -13,6 +13,10 @@
   # Use the systemd-boot EFI boot loader. Make sure your on a modern system
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  
+  # clean /tmp on boot by mounting in tmpfs
+  boot.tmpOnTmpfs = true;
+
 
 
   networking.hostName = "dell"; # Define your hostname, change this
@@ -57,6 +61,7 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.avahi.enable = true; 
 
   # Enable sound.
   sound.enable = true;

@@ -17,7 +17,7 @@ super + shift + Return
 super + d
 	dmenu_run
 super + r
-	$TERMINAL -e lf
+	devrep
 super + e
 	$TERMINAL -e neomutt; pkill -RTMIN+12 blocks
 # super + e

@@ -33,7 +33,8 @@ case "$file" in
 	*\.md) pandoc "$file" --pdf-engine=xelatex -o "$base".pdf ;;
 	*\.rs) cargo check;;
 	*config.h) sudo make install ;;
-        *\.c) cc "$file" -o "$base" && "$base" ;;
+  *\.c) cc "$file" -o "$base" && "$base" ;;
+  *\.zig) zig build 2>&1 || zig run "$file" ;;
 	*\.py) python "$file" ;;
 	*\.m) octave "$file" ;;
 	*\.scad) openscad -o "$base".stl "$file" ;;
