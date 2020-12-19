@@ -54,6 +54,8 @@ Plug 'chriskempson/base16-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " vim tmux
 Plug 'christoomey/vim-tmux-navigator'
+" git stuff
+Plug 'tpope/vim-fugitive'
 call plug#end()
 """""""""""""""""""""""""""""""""""""""""""' " stuffff for plugins
 set completeopt=noinsert,menuone,noselect

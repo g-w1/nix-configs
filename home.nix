@@ -32,6 +32,8 @@ programs.home-manager.enable = true;
     youtube-dl
     musescore
 
+    obs-studio
+
     zoom-us
 
     imagemagick
