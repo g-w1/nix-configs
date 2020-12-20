@@ -1,4 +1,9 @@
 #!/bin/sh
 
 repo=$(ls /home/jacob/dev | dmenu)
-alacritty --working-directory "/home/jacob/dev/$repo" -e nix-shell "/home/jacob/env/$repo.nix"
+
+if [ -f "/home/jacob/env/$repo.nix" ]; then
+  alacritty --working-directory "/home/jacob/dev/$repo" -e nix-shell "/home/jacob/env/$repo.nix"
+else
+  alacritty --working-directory "/home/jacob/dev/$repo" -e bash
+fi

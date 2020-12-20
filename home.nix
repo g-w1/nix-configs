@@ -118,11 +118,6 @@ programs.home-manager.enable = true;
         # tmux set -g pane-border-style "bg=#282828"
       fi
 
-      dev() {
-        cd ~/dev/$1
-        nix-shell ~/env/$1.nix
-      }
-
       # for starship prompt
       eval "$(starship init bash)"
     '';
