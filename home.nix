@@ -3,7 +3,8 @@
 let mypolybar = pkgs.polybar.override {
     mpdSupport = true;
     pulseSupport = true;
-  };
+};
+work = (pkgs.callPackage ./work.nix {}).rootCrate.build;
 in
   {
 programs.home-manager.enable = true;
@@ -16,6 +17,7 @@ programs.home-manager.enable = true;
     tealdeer
     starship
     github-cli
+    work
 
     # Development
     neovim
@@ -31,6 +33,7 @@ programs.home-manager.enable = true;
     firefox
     youtube-dl
     musescore
+    kdenlive
 
     obs-studio
 
@@ -120,6 +123,7 @@ programs.home-manager.enable = true;
 
       # for starship prompt
       eval "$(starship init bash)"
+      work ls
     '';
   };
 
@@ -164,6 +168,7 @@ programs.home-manager.enable = true;
 	  "zathura/zathurarc".source = ./zathurarc;
 	  "bspwm/bspwmrc".source = ./bspwmrc;
 	  "sxhkd/sxhkdrc".source = ./sxhkdrc;
+    "worktodo/worktodo.toml".source = ./worktodo.toml;
   };
 
   services.polybar = {
