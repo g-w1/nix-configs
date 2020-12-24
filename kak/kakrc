@@ -12,7 +12,7 @@ source "~/.config/kak/plugins/fzf.kak/rc/modules/VCS/fzf-git.kak" # Git support 
 map global normal '<c-t>' ': fzf-mode<ret>'
 
 # buffers
-source "~/.config/kak/plugins/kakoune-buffers/buffers.kak"
+source "~/.config/kak/plugins/buffers.kak"
 map global normal '<c-b>' ': pick-buffers<ret>'
 
 
