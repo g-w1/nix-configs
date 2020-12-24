@@ -6,7 +6,7 @@ export PATH="$PATH:$HOME/.skim/bin"
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 
 # Default programs:
-export EDITOR="nvim"
+export EDITOR="kak"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
 export READER="zathura"
