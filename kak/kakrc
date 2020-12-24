@@ -15,18 +15,21 @@ map global normal '<c-t>' ': fzf-mode<ret>'
 source "~/.config/kak/plugins/buffers.kak"
 map global normal '<c-b>' ': pick-buffers<ret>'
 
-
-
 # lsp stuff
 eval %sh{kak-lsp --kakoune -s $kak_session}
 hook global WinSetOption filetype=(rust|zig|c|cpp) %{
    lsp-enable-window
 }
+
 lsp-auto-hover-enable
 lsp-auto-signature-help-enable
 
+hook global WinSetOption filetype=(rust|zig|c|cpp) %{
+  hook window BufWritePre .* lsp-formatting
+}
+
 ## for lsp log
-# set-option global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
+#set-option global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
 
 
 # clipboard: leader {y,p}
