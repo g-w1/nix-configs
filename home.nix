@@ -27,6 +27,7 @@ programs.home-manager.enable = true;
     rustup
     alacritty
     ruby
+    clang-tools # for clangd
 
     # Media
     brave
