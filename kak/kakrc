@@ -9,8 +9,12 @@ source "~/.config/kak/plugins/fzf.kak/rc/modules/fzf-buffer.kak" # switching buf
 source "~/.config/kak/plugins/fzf.kak/rc/modules/fzf-search.kak" # search within file contents
 source "~/.config/kak/plugins/fzf.kak/rc/modules/fzf-vcs.kak" # VCS base module
 source "~/.config/kak/plugins/fzf.kak/rc/modules/VCS/fzf-git.kak" # Git support module
-
 map global normal '<c-t>' ': fzf-mode<ret>'
+
+# buffers
+source "~/.config/kak/plugins/kakoune-buffers/buffers.kak"
+map global normal '<c-b>' ': pick-buffers<ret>'
+
 
 
 # lsp stuff
