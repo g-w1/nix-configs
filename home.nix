@@ -27,8 +27,11 @@ programs.home-manager.enable = true;
     rustup
     alacritty
     ruby
-    clang-tools # for clangd
     kakoune
+
+    # language servers
+    rust-analyzer
+    clang-tools
     kak-lsp
 
     # Media
@@ -172,7 +175,8 @@ programs.home-manager.enable = true;
 	  "bspwm/bspwmrc".source = ./bspwmrc;
 	  "sxhkd/sxhkdrc".source = ./sxhkdrc;
           "worktodo/worktodo.toml".source = ./worktodo.toml;
-          "kak/kakrc".source = ./kakrc;
+          "kak".source = ./kak;
+          "kak".recursive = true;
           "kak-lsp/kak-lsp.toml".source = ./kak-lsp.toml;
   };
 

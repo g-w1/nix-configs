@@ -1,0 +1,20 @@
+colorscheme gruvbox
+add-highlighter global/ number-lines
+
+# map global normal '<c-t>' ': fzf-mode<ret>'
+
+
+eval %sh{kak-lsp --kakoune -s $kak_session}
+hook global WinSetOption filetype=(rust|zig|c|cpp) %{
+   lsp-enable-window
+}
+lsp-auto-hover-enable
+lsp-auto-signature-help-enable
+
+# for log
+#set-option global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
+
+
+map global user p -docstring 'paste from clipboard' '!xsel -bo<ret>uU'
+map global user y -docstring 'copy to clipboard' '<a-|>xsel -bi<ret>'
+map global user d -docstring 'cut to clipboard' '|xsel -bi<ret>'
