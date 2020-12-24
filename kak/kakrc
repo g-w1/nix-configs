@@ -24,6 +24,9 @@ hook global WinSetOption filetype=(rust|zig|c|cpp) %{
 lsp-auto-hover-enable
 lsp-auto-signature-help-enable
 
+map global goto 'n' '<esc>: lsp-find-error --include-warnings<ret>' -docstring 'next error'
+map global goto 'p' '<esc>: lsp-find-error --previous --include-warnings <ret>' -docstring 'previous error'
+
 hook global WinSetOption filetype=(rust|zig|c|cpp) %{
   hook window BufWritePre .* lsp-formatting
 }
