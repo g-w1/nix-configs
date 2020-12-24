@@ -1,9 +1,19 @@
+# ui stuff
 colorscheme gruvbox
 add-highlighter global/ number-lines
 
-# map global normal '<c-t>' ': fzf-mode<ret>'
+# fzf stuff
+source "~/.config/kak/plugins/fzf.kak/rc/fzf.kak"
+source "~/.config/kak/plugins/fzf.kak/rc/modules/fzf-file.kak"   # fzf file chooser
+source "~/.config/kak/plugins/fzf.kak/rc/modules/fzf-buffer.kak" # switching buffers with fzf
+source "~/.config/kak/plugins/fzf.kak/rc/modules/fzf-search.kak" # search within file contents
+source "~/.config/kak/plugins/fzf.kak/rc/modules/fzf-vcs.kak" # VCS base module
+source "~/.config/kak/plugins/fzf.kak/rc/modules/VCS/fzf-git.kak" # Git support module
+
+map global normal '<c-t>' ': fzf-mode<ret>'
 
 
+# lsp stuff
 eval %sh{kak-lsp --kakoune -s $kak_session}
 hook global WinSetOption filetype=(rust|zig|c|cpp) %{
    lsp-enable-window
@@ -15,6 +25,6 @@ lsp-auto-signature-help-enable
 #set-option global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
 
 
+# clipboard
 map global user p -docstring 'paste from clipboard' '!xsel -bo<ret>uU'
 map global user y -docstring 'copy to clipboard' '<a-|>xsel -bi<ret>'
-map global user d -docstring 'cut to clipboard' '|xsel -bi<ret>'
