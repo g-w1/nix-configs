@@ -34,7 +34,7 @@
 timeout = 1800 # seconds = 30 minutes
 
 [language.c_cpp]
-filetypes = ["c", "cpp"]
+filetypes = ["c", "cpp", "c++"]
 roots = ["compile_commands.json", ".clangd"]
 command = "sh"
 args = ["-c", "clangd"]

@@ -25,10 +25,10 @@ hook global WinSetOption filetype=(rust|zig|c|cpp) %{
 lsp-auto-hover-enable
 lsp-auto-signature-help-enable
 
-# for log
-#set-option global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
+## for lsp log
+# set-option global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
 
 
-# clipboard
+# clipboard: leader {y,p}
 map global user p -docstring 'paste from clipboard' '!xsel -bo<ret>uU'
 map global user y -docstring 'copy to clipboard' '<a-|>xsel -bi<ret>'
