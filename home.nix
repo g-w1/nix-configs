@@ -28,6 +28,8 @@ programs.home-manager.enable = true;
     alacritty
     ruby
     clang-tools # for clangd
+    kakoune
+    kak-lsp
 
     # Media
     brave
@@ -105,14 +107,14 @@ programs.home-manager.enable = true;
       df=''df -h'' ;
       e =''exit'' ;
       c =''clear'' ;
-      vim=''nvim'';
+      vim=''kak'';
       cu=''cd ..'' ;
       fd=''fd --no-ignore'';
       t=''tmux'';
       ta=''tmux a'';
       tl=''tmux ls'';
       ca=''cargo'';
-      cfnix=''cd ~/.config/nixpkgs&&nvim home.nix'';
+      cfnix=''cd ~/.config/nixpkgs&&kak home.nix'';
     };
     initExtra = ''
       if [ -n "$TMUX" ]; then
@@ -169,7 +171,9 @@ programs.home-manager.enable = true;
 	  "zathura/zathurarc".source = ./zathurarc;
 	  "bspwm/bspwmrc".source = ./bspwmrc;
 	  "sxhkd/sxhkdrc".source = ./sxhkdrc;
-    "worktodo/worktodo.toml".source = ./worktodo.toml;
+          "worktodo/worktodo.toml".source = ./worktodo.toml;
+          "kak/kakrc".source = ./kakrc;
+          "kak-lsp/kak-lsp.toml".source = ./kak-lsp.toml;
   };
 
   services.polybar = {

@@ -9,6 +9,6 @@ cd $dir
 file=$(git ls-files|fzf)
 case $? in
   130) ;;
-  *) nvim $file;;
+  *) kak $file;;
 esac
 cd $curdir
