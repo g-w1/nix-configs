@@ -2,6 +2,10 @@
 colorscheme gruvbox
 add-highlighter global/ number-lines
 
+# clipboard: leader {y,p}
+map global user p -docstring 'paste from clipboard' '!xsel -bo<ret>uU'
+map global user y -docstring 'copy to clipboard' '<a-|>xsel -bi<ret>'
+
 # fzf stuff
 source "~/.config/kak/plugins/fzf.kak/rc/fzf.kak"
 source "~/.config/kak/plugins/fzf.kak/rc/modules/fzf-file.kak"   # fzf file chooser
@@ -9,6 +13,7 @@ source "~/.config/kak/plugins/fzf.kak/rc/modules/fzf-buffer.kak" # switching buf
 source "~/.config/kak/plugins/fzf.kak/rc/modules/fzf-search.kak" # search within file contents
 source "~/.config/kak/plugins/fzf.kak/rc/modules/fzf-vcs.kak" # VCS base module
 source "~/.config/kak/plugins/fzf.kak/rc/modules/VCS/fzf-git.kak" # Git support module
+
 map global normal '<c-t>' ': fzf-mode<ret>'
 
 # buffers
@@ -35,6 +40,4 @@ hook global WinSetOption filetype=(rust|zig|c|cpp) %{
 #set-option global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
 
 
-# clipboard: leader {y,p}
-map global user p -docstring 'paste from clipboard' '!xsel -bo<ret>uU'
-map global user y -docstring 'copy to clipboard' '<a-|>xsel -bi<ret>'
+

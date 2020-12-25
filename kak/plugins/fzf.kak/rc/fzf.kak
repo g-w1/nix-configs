@@ -76,13 +76,13 @@ Default value: 60%%" \
 str fzf_preview_height '60%'
 
 declare-option -docstring "mapping to execute action in new window" \
-str fzf_window_map 'ctrl-w'
+str fzf_window_map 'ctrl-t'
 
 declare-option -docstring "mapping to execute action in new vertical split" \
-str fzf_vertical_map 'ctrl-v'
+str fzf_vertical_map 'ctrl-x'
 
 declare-option -docstring "mapping to execute action in new horizontal split" \
-str fzf_horizontal_map 'ctrl-s'
+str fzf_horizontal_map 'ctrl-v'
 
 declare-option -docstring 'command to use to create new window when not using tmux.
 
@@ -90,7 +90,7 @@ Default value: terminal kak -c %val{session} -e "%arg{@}"' \
 str fzf_terminal_command 'terminal kak -c %val{session} -e "%arg{@}"'
 
 declare-option -docstring "use main selection as default query for fzf if the selection is longer than 1 char." \
-bool fzf_use_main_selection true
+bool fzf_use_main_selection false
 
 declare-option -docstring "Default options for fzf." \
 str fzf_default_opts ''
