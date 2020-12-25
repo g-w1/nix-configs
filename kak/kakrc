@@ -1,6 +1,7 @@
 # ui stuff
 colorscheme gruvbox
 add-highlighter global/ number-lines
+add-highlighter global/ wrap
 
 # clipboard: leader {y,p}
 map global user p -docstring 'paste from clipboard' '!xsel -bo<ret>uU'
@@ -13,12 +14,17 @@ source "~/.config/kak/plugins/fzf.kak/rc/modules/fzf-buffer.kak" # switching buf
 source "~/.config/kak/plugins/fzf.kak/rc/modules/fzf-search.kak" # search within file contents
 source "~/.config/kak/plugins/fzf.kak/rc/modules/fzf-vcs.kak" # VCS base module
 source "~/.config/kak/plugins/fzf.kak/rc/modules/VCS/fzf-git.kak" # Git support module
+require-module fzf_vcs
+require-module fzf
 
-map global normal '<c-t>' ': fzf-mode<ret>'
+map global normal '<c-t>' ': fzf-vcs<ret>'
+
+# search
+map global normal / '/(?i)(?S)'
 
 # buffers
-source "~/.config/kak/plugins/buffers.kak"
-map global normal '<c-b>' ': pick-buffers<ret>'
+map global normal '<c-b>' ': fzf-buffer<ret>'
+
 
 # lsp stuff
 eval %sh{kak-lsp --kakoune -s $kak_session}
