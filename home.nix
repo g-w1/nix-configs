@@ -131,7 +131,6 @@ programs.home-manager.enable = true;
       # for starship prompt
       eval "$(starship init bash)"
       work ls
-      wmname compiz
     '';
   };
 
