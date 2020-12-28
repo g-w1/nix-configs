@@ -22,6 +22,9 @@ map global normal '<c-t>' ': fzf-vcs<ret>'
 # search
 map global normal / '/(?i)(?S)'
 
+# comments
+map global normal '#' ': comment-line<ret>'
+
 # buffers
 map global normal '<c-b>' ': fzf-buffer<ret>'
 
