@@ -22,6 +22,9 @@ map global normal '<c-t>' ': fzf-vcs<ret>'
 # search
 map global normal / '/(?i)(?S)'
 
+# grep to rg
+set-option global grepcmd 'rg -i'
+
 # comments
 map global normal '#' ': comment-line<ret>'
 
