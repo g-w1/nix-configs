@@ -2,11 +2,6 @@
 # dwm-independent commands.  This file is pretty readable, so I'll let you read
 # it.
 
-# The keys NOT bound here by sxhkd, but by dwm or i3 are:
-# The t thru p keys on the top row
-# The f thru ; keys on the home row
-# The b key on the bottom row (hides the bar in either case)
-
 # Basic binds
 super + Return
 	$TERMINAL #-e tmux
@@ -18,10 +13,6 @@ super + d
 	dmenu_run
 super + r
 	devrep
-super + e
-	$TERMINAL -e neomutt; pkill -RTMIN+12 blocks
-# super + e
-# 	$TERMINAL -e neomutt -f school
 super + m
 	$TERMINAL -e ncmpcpp
 super + n
