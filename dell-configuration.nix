@@ -17,8 +17,6 @@
   # clean /tmp on boot by mounting in tmpfs
   boot.tmpOnTmpfs = true;
 
-
-
   networking.hostName = "dell"; # Define your hostname, change this
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
@@ -104,7 +102,7 @@
   nixpkgs.config.allowUnfree = true;
   networking.extraHosts = 
   ''
-  10.0.1.34 bruh
+192.168.1.124 bruh
   '';
 
 }

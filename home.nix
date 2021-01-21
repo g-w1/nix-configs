@@ -18,20 +18,27 @@ programs.home-manager.enable = true;
     starship
     github-cli
     work
+    xdotool
+    black
 
     # Development
     neovim
     tmux
+    screen
     fzf
     nodejs
+    python38
     rustup
     alacritty
     ruby
     kakoune
+    plan9port # NICE
 
     # language servers
     rust-analyzer
     clang-tools
+    python38Packages.python-language-server
+    python38Packages.pyls-mypy
     kak-lsp
 
     # Media
@@ -39,6 +46,7 @@ programs.home-manager.enable = true;
     firefox
     youtube-dl
     musescore
+    lame
     kdenlive
 
     obs-studio
@@ -81,6 +89,7 @@ programs.home-manager.enable = true;
     enable = true;
     shellAliases = {
       cp=''cp -iv'';
+      sa=''screen -x'';
       mv=''mv -iv'';
       rm=''rm -v'';
       mkd=''mkdir -pv'';
@@ -119,6 +128,7 @@ programs.home-manager.enable = true;
       tl=''tmux ls'';
       ca=''cargo'';
       cfnix=''cd ~/.config/nixpkgs&&kak home.nix'';
+      clbin = "curl -F 'clbin=<-' https://clbin.com";
     };
     initExtra = ''
       if [ -n "$TMUX" ]; then
@@ -131,6 +141,7 @@ programs.home-manager.enable = true;
       # for starship prompt
       eval "$(starship init bash)"
       work ls
+      set -h
     '';
   };
 
@@ -165,6 +176,7 @@ programs.home-manager.enable = true;
 	  ".local/bin".source = ./scripts;
 	  ".local/bin".recursive = true;
 	  ".config/starship.toml".source = ./starship.toml;
+	  ".npmrc".source = ./npmrc;
   };
 
   xdg.configFile = {

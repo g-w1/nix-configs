@@ -2,6 +2,7 @@
 colorscheme gruvbox
 add-highlighter global/ number-lines
 add-highlighter global/ wrap
+add-highlighter global/ show-matching
 
 # clipboard: leader {y,p}
 map global user p -docstring 'paste from clipboard' '!xsel -bo<ret>uU'
@@ -23,7 +24,7 @@ map global normal '<c-t>' ': fzf-vcs<ret>'
 map global normal / '/(?i)(?S)'
 
 # grep to rg
-set-option global grepcmd 'rg -i'
+set-option global grepcmd 'rg --column --with-filename'
 
 # comments
 map global normal '#' ': comment-line<ret>'
@@ -31,12 +32,37 @@ map global normal '#' ': comment-line<ret>'
 # buffers
 map global normal '<c-b>' ': fzf-buffer<ret>'
 
-
 # lsp stuff
 eval %sh{kak-lsp --kakoune -s $kak_session}
-hook global WinSetOption filetype=(rust|zig|c|cpp) %{
+
+hook global WinSetOption filetype=(rust|zig|c|cpp|python) %{
    lsp-enable-window
 }
+# formatting
+
+hook global WinSetOption filetype=(rust|zig|c|java|js|c|cpp|python) %{
+    hook window BufWritePre .* format
+}
+
+
+
+hook global WinSetOption filetype=zig %{
+    set-option buffer formatcmd 'zig fmt --stdin'
+    set-option buffer makecmd 'zig build&&echo done'
+}
+
+hook global WinSetOption filetype=rust %{
+    set-option buffer formatcmd 'rustfmt'
+}
+hook global WinSetOption filetype=python %{
+    set-option buffer formatcmd 'black -q -'
+}
+
+hook global WinSetOption filetype=(c|cpp|java|javascript) %{
+    set-option buffer formatcmd 'clang-format'
+}
+
+
 
 lsp-auto-hover-enable
 lsp-auto-signature-help-enable
@@ -44,12 +70,9 @@ lsp-auto-signature-help-enable
 map global goto 'n' '<esc>: lsp-find-error --include-warnings<ret>' -docstring 'next error'
 map global goto 'p' '<esc>: lsp-find-error --previous --include-warnings <ret>' -docstring 'previous error'
 
-hook global WinSetOption filetype=(rust|zig|c|cpp) %{
-  hook window BufWritePre .* lsp-formatting
-}
 
 ## for lsp log
 #set-option global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
 
 
-
+set global indentwidth 4

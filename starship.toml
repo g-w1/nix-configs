@@ -1,12 +1,12 @@
 add_newline = false
-[python]
-disabled=true
-[zig]
-disabled=true
-[rust]
-disabled=true
-[cmake]
-disabled=true
+# [python]
+# disabled=true
+# [zig]
+# disabled=true
+# [rust]
+# disabled=true
+# [cmake]
+# disabled=true
 [directory]
 truncation_length=100
 read_only=" 🔒"

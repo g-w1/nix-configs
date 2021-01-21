@@ -1,5 +1,7 @@
 #!/bin/sh
 
+cd /home/jacob/dev
+
 repo=$(ls /home/jacob/dev | dmenu)
 
 if [ -f "/home/jacob/env/$repo.nix" ]; then
