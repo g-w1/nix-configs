@@ -20,6 +20,7 @@ programs.home-manager.enable = true;
     work
     xdotool
     black
+    aerc
 
     # Development
     neovim
@@ -32,7 +33,7 @@ programs.home-manager.enable = true;
     alacritty
     ruby
     kakoune
-    plan9port # NICE
+    # plan9port # NICE
 
     # language servers
     rust-analyzer
@@ -48,6 +49,7 @@ programs.home-manager.enable = true;
     musescore
     lame
     kdenlive
+    jq
 
     obs-studio
 
@@ -102,6 +104,7 @@ programs.home-manager.enable = true;
       al=''exa -a'';
       ll=''exa -l'';
       l=''exa -la'';
+     lc=''exa'';
       tree=''exa -T'';
       grep=''rg'';
       psg=''ps -A | grep -i'';
@@ -139,7 +142,8 @@ programs.home-manager.enable = true;
       fi
 
       # for starship prompt
-      eval "$(starship init bash)"
+     eval "$(starship init bash)"
+      # export PS1="% "
       work ls
       set -h
     '';

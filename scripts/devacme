@@ -1,0 +1,13 @@
+#!/bin/sh
+
+cd /home/jacob/dev
+
+repo=$(ls /home/jacob/dev | dmenu)
+export $SHELL=rc
+
+cd /home/jacob/dev/$repo
+if [ -f "/home/jacob/env/$repo.nix" ]; then
+  nix-shell "/home/jacob/env/$repo.nix" --run "9 acme /home/jacob/dev/$repo/"
+else
+  9 acme "/home/jacob/dev/$repo"
+fi

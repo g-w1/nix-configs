@@ -60,3 +60,4 @@ export PATH="/home/jacob/.local/share/cargo/bin:$PATH"
 export PATH="/home/jacob/.gem/ruby/2.7.0/bin:$PATH"
 export PATH=~/.npm-global/bin:$PATH
 export PATH=~/Nextcloud/code/other/zig/build/bin:$PATH
+export GIT_PAGER=cat
