@@ -43,7 +43,7 @@
   };
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
-    wget neovim curl exa git
+    wget neovim curl exa gitAndTools.gitFull
   ];
 
   # List services that you want to enable:

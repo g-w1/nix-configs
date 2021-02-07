@@ -32,6 +32,10 @@ map global normal '#' ': comment-line<ret>'
 # buffers
 map global normal '<c-b>' ': fzf-buffer<ret>'
 
+# spaces tab stuf
+set global indentwidth 4
+set global tabstop 4
+
 # lsp stuff
 eval %sh{kak-lsp --kakoune -s $kak_session}
 
@@ -40,7 +44,7 @@ hook global WinSetOption filetype=(rust|zig|c|cpp|python) %{
 }
 # formatting
 
-hook global WinSetOption filetype=(rust|zig|c|java|js|c|cpp|python) %{
+hook global WinSetOption filetype=(rust|zig|java|js|python) %{
     hook window BufWritePre .* format
 }
 
@@ -58,8 +62,12 @@ hook global WinSetOption filetype=python %{
     set-option buffer formatcmd 'black -q -'
 }
 
-hook global WinSetOption filetype=(c|java|javascript) %{
+hook global WinSetOption filetype=(cpp|c|java|javascript) %{
     set-option buffer formatcmd 'clang-format'
+}
+hook global WinSetOption filetype=(c) %{
+    # we want tabs for these filetypes
+    set global indentwidth 0
 }
 
 
@@ -75,4 +83,3 @@ map global goto 'p' '<esc>: lsp-find-error --previous --include-warnings <ret>' 
 #set-option global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
 
 
-set global indentwidth 4

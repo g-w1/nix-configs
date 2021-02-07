@@ -134,18 +134,21 @@ programs.home-manager.enable = true;
       clbin = "curl -F 'clbin=<-' https://clbin.com";
     };
     initExtra = ''
-      if [ -n "$TMUX" ]; then
-        tmux set -a window-active-style "bg=#1C1C1C"
-        tmux set -a window-style "bg=#282828"
-        # tmux set -g pane-active-border-style "bg=#1C1C1C"
-        # tmux set -g pane-border-style "bg=#282828"
-      fi
+if [ -n "$TMUX" ]; then
+    tmux set -a window-active-style "bg=#1C1C1C"
+    tmux set -a window-style "bg=#282828"
+    # tmux set -g pane-active-border-style "bg=#1C1C1C"
+    # tmux set -g pane-border-style "bg=#282828"
+fi
 
-      # for starship prompt
-     eval "$(starship init bash)"
-      # export PS1="% "
-      work ls
-      set -h
+if [ $TERM = "dumb" ]; then
+    export PS1="% "
+else
+    # for starship prompt
+    eval "$(starship init bash)"
+fi
+work ls
+set -h
     '';
   };
 
@@ -158,6 +161,7 @@ programs.home-manager.enable = true;
   };
 
   programs.git = {
+    package = pkgs.gitAndTools.gitFull;
     enable = true;
     userEmail = "jacoblevgw@gmail.com";
     userName = "g-w1";

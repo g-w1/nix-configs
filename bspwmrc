@@ -8,10 +8,10 @@ xsetroot -cursor_name left_ptr
 
 case $(hostname) in
 	dell)
-		bspc monitor DP-3 -d 1 2 3
+		bspc monitor DP-3 -d 1 2 3 4 5
 		;;
 	nixpad)
-		bspc monitor LVDS-1 -d 1 2 3
+		bspc monitor LVDS-1 -d 1 2 3 4 5
 		;;
 	*)
 		;;
