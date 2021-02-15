@@ -22,6 +22,9 @@ map global normal '<c-t>' ': fzf-vcs<ret>'
 
 # janet
 source "~/.config/nixpkgs/kak/plugins/janet.kak/rc/janet.kak"
+source "~/.config/nixpkgs/kak/plugins/surround.kak"
+map global user -docstring 'Janet mode' j ': enter-user-mode janet<ret>'
+
 
 # search
 map global normal / '/(?i)(?S)'

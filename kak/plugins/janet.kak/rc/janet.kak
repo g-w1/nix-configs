@@ -109,6 +109,7 @@ $(janet -e '(print (string "def var fn do quote if splice while break set quasiq
 # Commands
 # ‾‾‾‾‾‾‾‾
 define-command janet-doc %{ evaluate-commands  %{
+    execute-keys <a-i>w
     # -- Janet OUTPUT stored in %reg{o}
     set-register o %sh{
       output=$(mktemp -d "${TMPDIR:-/tmp}"/kak-janet-doc.XXXXXXXX)/fifo
@@ -142,7 +143,7 @@ define-command janet-fly %{ evaluate-commands  %{
 }}
 
 declare-user-mode janet
-map global janet -docstring 'repl'      r ': connect-terminal janet<ret>'
+map global janet -docstring 'repl'      r ': terminal janet<ret>'
 map global janet -docstring 'tracev'    t ': surround<ret>(<a-;>itracev <esc>'
 map global janet -docstring 'strip '    T 'edd: delete-surround<ret>( <esc>'
 map global janet -docstring 'Janet doc' d ': janet-doc<ret>'
