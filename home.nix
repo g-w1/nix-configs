@@ -21,6 +21,7 @@ programs.home-manager.enable = true;
     xdotool
     black
     aerc
+    amfora # gemini
 
     # Development
     neovim
