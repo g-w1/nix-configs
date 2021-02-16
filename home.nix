@@ -22,6 +22,7 @@ programs.home-manager.enable = true;
     black
     aerc
     amfora # gemini
+    file
 
     # Development
     neovim
@@ -34,6 +35,7 @@ programs.home-manager.enable = true;
     alacritty
     ruby
     kakoune
+    parinfer-rust
     # plan9port # NICE
 
     # language servers
