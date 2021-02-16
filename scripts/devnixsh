@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+
+from subprocess import Popen, PIPE
+
+p = Popen(["dmenu"], stdout=PIPE, stdin=PIPE)
+stdout_data = p.communicate(input="")[0]
+
+stdout_data = stdout_data.strip().decode().split()
+
+Popen(["alacritty", "-e", "nix-shell"] + ["-p " + x for x in stdout_data])
