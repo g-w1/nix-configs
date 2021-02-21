@@ -28,9 +28,9 @@ super + shift + a
 super + shift + c
 	mpv --no-osc --no-input-default-bindings --input-conf=/dev/null --title='mpvfloat' /dev/video0
 super + shift + w
-	icecat
+	firefox
 super + w
-	$BROWSER
+	brave
 super + a
 	$TERMINAL -e pulsemixer
 
