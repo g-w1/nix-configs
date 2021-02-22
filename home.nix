@@ -87,6 +87,8 @@ in {
     # misc
     dconf
     wmname # for java stuff
+    gnutls # irc in emacs!
+    mu isync # mail in emacs
   ];
 
   programs.bash = {
@@ -132,8 +134,10 @@ in {
       ta = "tmux a";
       tl = "tmux ls";
       ca = "cargo";
-      cfnix = "cd ~/.config/nixpkgs&&kak home.nix";
+      cfnix = "cd ~/.config/nixpkgs&&$EDITOR home.nix";
       clbin = "curl -F 'clbin=<-' https://clbin.com";
+      mu-init = "mu init --maildir=~/.mail/ --my-address=jacoblevgw@gmail.com --my-address=goldman-wetzlerj24@learn.hohschools.org";
+
     };
     initExtra = ''
       if [ -n "$TMUX" ]; then
@@ -193,6 +197,7 @@ in {
     ".local/bin".recursive = true;
     ".config/starship.toml".source = ./starship.toml;
     ".npmrc".source = ./npmrc;
+    ".mbsyncrc".source = ./mbsyncrc;
   };
 
   xdg.configFile = {
