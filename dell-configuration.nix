@@ -13,7 +13,7 @@
   # Use the systemd-boot EFI boot loader. Make sure your on a modern system
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  
+
   # clean /tmp on boot by mounting in tmpfs
   boot.tmpOnTmpfs = true;
 
@@ -59,7 +59,7 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-  services.avahi.enable = true; 
+  services.avahi.enable = true;
 
   # Enable sound.
   sound.enable = true;
@@ -81,7 +81,7 @@
   # enable no displaymanager
   services.xserver.displayManager.startx.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’. 
+  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jacob = {
     isNormalUser = true;
     extraGroups = [ "wheel" "video" ]; # Enable ‘sudo’ for the user.
@@ -94,16 +94,15 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "20.09"; # Did you read the comment?
- 
+
   # add slock to the oom killers so I can actually use
   security.wrappers.slock.source = "${pkgs.slock.out}/bin/slock";
 
   # unfree software
   nixpkgs.config.allowUnfree = true;
-  networking.extraHosts = 
+  networking.extraHosts =
   ''
 192.168.1.124 bruh
   '';
 
 }
-

@@ -196,7 +196,7 @@ set t_ZH=^[[3m
 set t_ZR=^[[23m
 highlight Comment cterm=italic
 """"""""" colortheme
-colorscheme base16-default-dark
+colorscheme base16-gruvbox-dark-medium
 let g:airline_theme='lucius'
 set termguicolors
 " no background

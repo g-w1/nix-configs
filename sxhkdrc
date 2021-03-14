@@ -163,7 +163,7 @@ super + {_,shift + }q
 
 # alternate between the tiled and monocle layout
 super + {_,shift + }f
-	bspc {desktop -l next,node -t ~fullscreen}
+	bspc {node -t ~fullscreen,desktop -l next}
 
 # rotate current node 90 degrees
 super + y

@@ -4,8 +4,4 @@ cd /home/jacob/dev
 
 repo=$(ls /home/jacob/dev | dmenu)
 
-if [ -f "/home/jacob/env/$repo.nix" ]; then
-  alacritty --working-directory "/home/jacob/dev/$repo" -e nix-shell "/home/jacob/env/$repo.nix"
-else
-  alacritty --working-directory "/home/jacob/dev/$repo" -e bash
-fi
+alacritty --working-directory "/home/jacob/dev/$repo"

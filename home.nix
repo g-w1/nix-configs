@@ -11,7 +11,7 @@ in {
   home.packages = with pkgs; [
     # cli tools
     exa
-    bat
+    less
     fd
     ripgrep
     tealdeer
@@ -89,6 +89,7 @@ in {
     wmname # for java stuff
     gnutls # irc in emacs!
     mu isync # mail in emacs
+    ispell # spelling in emacs
   ];
 
   programs.bash = {
@@ -177,6 +178,7 @@ in {
     extraConfig = {
       credential = { helper = "cache --timeout=36000"; };
       pull = { rebase = false; };
+      merge = { conflictstyle = "diff3"; };
     };
   };
 
