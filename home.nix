@@ -33,6 +33,7 @@ in {
     python38
     rustup
     alacritty
+    foot
     ruby
     kakoune
     parinfer-rust
@@ -55,8 +56,6 @@ in {
     jq
 
     obs-studio
-
-    zoom-us
 
     imagemagick
     sxiv
@@ -88,12 +87,13 @@ in {
     dconf
     wmname # for java stuff
     gnutls # irc in emacs!
-    mu isync # mail in emacs
+    # mu isync # mail in emacs
     ispell # spelling in emacs
   ];
 
   programs.bash = {
     enable = true;
+    historyFileSize = 10000000;
     shellAliases = {
       cp = "cp -iv";
       sa = "screen -x";
@@ -197,6 +197,7 @@ in {
     ".profile".source = ./profile;
     ".local/bin".source = ./scripts;
     ".local/bin".recursive = true;
+    ".local/share/emoji".source = ./emoji;
     ".config/starship.toml".source = ./starship.toml;
     ".npmrc".source = ./npmrc;
     ".mbsyncrc".source = ./mbsyncrc;

@@ -11,6 +11,7 @@ export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="brave"
 export READER="zathura"
+export XKB_DEFAULT_LAYOUT="us(colemak)" river
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"

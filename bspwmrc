@@ -19,9 +19,9 @@ esac
 
 launch_polybar&
 
-bspc config border_width 3
-bspc config window_gap 7
-bspc config top_padding 24	# top_padding I set equal to polybar's height
+bspc config border_width 1
+bspc config window_gap 1
+bspc config top_padding 25	# top_padding I set equal to polybar's height
 bspc config focus_follows_pointer true
 
 bspc rule -a Screenkey manage=off
