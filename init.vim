@@ -1,5 +1,5 @@
 """""""" leader
-let mapleader =","
+let mapleader =" "
 """"""""""""""" cursors
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
@@ -63,13 +63,17 @@ set shortmess+=c
 " go to definition
 nmap <silent> gd <Plug>(coc-definition)
 " rename
-nmap <silent> <leader>rn <Plug>(coc-rename)
+nmap <silent> <leader>cr <Plug>(coc-rename)
 " go to errors next
-nmap <silent> gne <Plug>(coc-diagnostic-next)
-nmap <silent> gpe <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>e <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>e <Plug>(coc-diagnostic-prev)
 " better brackets
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
       \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+
+" good esc in terminal mode
+tnoremap <Esc> <C-\><C-n>
 " ezzzzzzzzzz (i made this lang up)
 autocmd BufNewFile,BufRead *.ez set commentstring=[%s]
 " for python in async
@@ -81,8 +85,10 @@ au TextYankPost * silent! lua return (not vim.v.event.visual) and require'vim.hi
 " vimtex
 let g:tex_flavor = 'latex'
 " fzf
-map <C-t> :GFiles<CR>
-map <C-f> :Rg<CR>
+" map <C-t> :GFiles<CR>
+map <leader><space> :GFiles<CR>
+" map <C-f> :Rg<CR>
+map <leader>/ :Rg<CR>
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = {'down': '~30%'}
 " airline/gui
@@ -94,7 +100,10 @@ set mouse=a
 	set hlsearch
 	set ignorecase
 	set smartcase
-	nnoremap <CR> :nohlsearch<cr>a<ESC>
+	nnoremap <ESC> :nohlsearch<cr>a<ESC>
+" terminals
+	nnoremap <leader>ot :sp<cr>:terminal<cr>
+	nnoremap <leader>oT :terminal<cr>
 " tabs
 set tabstop=2
 set shiftwidth=2

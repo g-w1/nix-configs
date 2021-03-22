@@ -1,0 +1,13 @@
+{
+  // "coc.preferences.jumpCommand": "tabe",
+   "languageserver": {
+       "zls" : {
+           "command": "/home/jacob/dev/zls/zig-cache/bin/zls",
+           "filetypes": ["zig"]
+       },
+       "clangd": {
+         "command": "clangd",
+         "filetypes": ["c", "cpp"]
+       }
+  }
+}

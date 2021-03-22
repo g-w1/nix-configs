@@ -198,6 +198,7 @@ in {
     ".local/bin".source = ./scripts;
     ".local/bin".recursive = true;
     ".local/share/emoji".source = ./emoji;
+    ".config/nvim/coc-settings.json".source = ./coc-settings.json;
     ".config/starship.toml".source = ./starship.toml;
     ".npmrc".source = ./npmrc;
     ".mbsyncrc".source = ./mbsyncrc;
