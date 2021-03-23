@@ -87,6 +87,7 @@ in {
     dconf
     wmname # for java stuff
     gnutls # irc in emacs!
+    w3m
     # mu isync # mail in emacs
     ispell # spelling in emacs
   ];
@@ -141,6 +142,9 @@ in {
 
     };
     initExtra = ''
+      function ? {
+        w3m "https://ddg.gg/?q=$(echo $@)"
+      }
       if [ -n "$TMUX" ]; then
           tmux set -a window-active-style "bg=#1C1C1C"
           tmux set -a window-style "bg=#282828"

@@ -55,7 +55,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " vim tmux
 Plug 'christoomey/vim-tmux-navigator'
 " git stuff
-Plug 'tpope/vim-fugitive'
+Plug 'https://github.com/jreybert/vimagit'
 call plug#end()
 """""""""""""""""""""""""""""""""""""""""""' " stuffff for plugins
 set completeopt=noinsert,menuone,noselect
@@ -71,9 +71,28 @@ nmap <silent> <leader>e <Plug>(coc-diagnostic-prev)
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
       \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+" git stuff
+nnoremap <leader>gg :Magit<CR>
 
-" good esc in terminal mode
-tnoremap <Esc> <C-\><C-n>
+" terminal mode
+augroup terminal_settings
+  autocmd!
+
+  autocmd BufWinEnter,WinEnter term://* startinsert
+  autocmd BufLeave term://* stopinsert
+
+
+  au TermOpen * tnoremap <Esc> <c-\><c-n>
+  au FileType fzf tunmap <Esc>
+
+  " Ignore various filetypes as those will close terminal automatically
+  " Ignore fzf, ranger, coc
+  autocmd TermClose term://*
+        \ if (expand('<afile>') !~ "fzf") && (expand('<afile>') !~ "ranger") && (expand('<afile>') !~ "coc") |
+        \   call nvim_input('<CR>')  |
+        \ endif
+augroup END
+
 " ezzzzzzzzzz (i made this lang up)
 autocmd BufNewFile,BufRead *.ez set commentstring=[%s]
 " for python in async
@@ -85,10 +104,9 @@ au TextYankPost * silent! lua return (not vim.v.event.visual) and require'vim.hi
 " vimtex
 let g:tex_flavor = 'latex'
 " fzf
-" map <C-t> :GFiles<CR>
 map <leader><space> :GFiles<CR>
-" map <C-f> :Rg<CR>
 map <leader>/ :Rg<CR>
+map <leader>, :Buffers<CR>
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = {'down': '~30%'}
 " airline/gui
@@ -100,10 +118,11 @@ set mouse=a
 	set hlsearch
 	set ignorecase
 	set smartcase
-	nnoremap <ESC> :nohlsearch<cr>a<ESC>
+	nnoremap <esc> :nohlsearch<cr>a<ESC>
 " terminals
 	nnoremap <leader>ot :sp<cr>:terminal<cr>
 	nnoremap <leader>oT :terminal<cr>
+
 " tabs
 set tabstop=2
 set shiftwidth=2
@@ -139,6 +158,9 @@ set autoread
 	autocmd! User GoyoLeave Limelight!; hi Normal guibg=NONE ctermbg=NONE
 " tera html templates
 autocmd BufNewFile,BufRead *.tera set syntax=html
+
+" buffers
+nnoremap <leader>bk :bd<cr>
 
 " Shortcutting split navigation, saving a keypress:
 " dont need anymore because i use the tmux integrateion
@@ -205,7 +227,7 @@ set t_ZH=^[[3m
 set t_ZR=^[[23m
 highlight Comment cterm=italic
 """"""""" colortheme
-colorscheme base16-gruvbox-dark-medium
+colorscheme base16-gruvbox-dark-soft
 let g:airline_theme='lucius'
 set termguicolors
 " no background
