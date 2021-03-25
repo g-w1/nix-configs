@@ -55,7 +55,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " vim tmux
 Plug 'christoomey/vim-tmux-navigator'
 " git stuff
-Plug 'https://github.com/jreybert/vimagit'
+Plug 'https://github.com/tpope/vim-fugitive'
 call plug#end()
 """""""""""""""""""""""""""""""""""""""""""' " stuffff for plugins
 set completeopt=noinsert,menuone,noselect
@@ -72,7 +72,7 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
       \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " git stuff
-nnoremap <leader>gg :Magit<CR>
+nnoremap <leader>gg :Git<CR>
 
 " terminal mode
 augroup terminal_settings
