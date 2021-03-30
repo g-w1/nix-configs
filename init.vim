@@ -107,6 +107,7 @@ let g:tex_flavor = 'latex'
 map <leader><space> :GFiles<CR>
 map <leader>/ :Rg<CR>
 map <leader>, :Buffers<CR>
+
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = {'down': '~30%'}
 " airline/gui
@@ -168,6 +169,11 @@ nnoremap <leader>bk :bd<cr>
 	map <C-j> <C-w>j
 	map <C-k> <C-w>k
 	map <C-l> <C-w>l
+	map <leader>wh <C-w>h
+	map <leader>wj <C-w>j
+	map <leader>wk <C-w>k
+	map <leader>wl <C-w>l
+	map <leader>wd :q<CR>
 " Replace ex mode with gq
 	map Q gq
 

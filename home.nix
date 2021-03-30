@@ -94,7 +94,7 @@ in {
 
   programs.bash = {
     enable = true;
-    historyFileSize = 10000000;
+    historyFileSize = 100000000;
     shellAliases = {
       cp = "cp -iv";
       sa = "screen -x";
@@ -142,6 +142,7 @@ in {
 
     };
     initExtra = ''
+      HISTSIZE=100000000
       function ? {
         w3m "https://ddg.gg/?q=$(echo $@)"
       }
