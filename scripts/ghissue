@@ -1,0 +1,4 @@
+#!/bin/sh
+
+
+$BROWSER "https://github.com/$1/pull/$2"

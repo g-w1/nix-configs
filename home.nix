@@ -119,7 +119,6 @@ in {
       g = "git";
       gis = "git status";
       gac = "git add . ; git commit -a";
-      gr = "cd \\`git rev-parse --show-toplevel\\`";
       diff = "diff --color=auto";
       ka = "killall";
       sl = "ls";
@@ -138,13 +137,21 @@ in {
       ca = "cargo";
       cfnix = "cd ~/.config/nixpkgs&&$EDITOR home.nix";
       clbin = "curl -F 'clbin=<-' https://clbin.com";
-      mu-init = "mu init --maildir=~/.mail/ --my-address=jacoblevgw@gmail.com --my-address=goldman-wetzlerj24@learn.hohschools.org";
-
+      pastebin = "xclip -selection clipboard -o | clbin";
+      mu-init =
+        "mu init --maildir=~/.mail/ --my-address=jacoblevgw@gmail.com --my-address=goldman-wetzlerj24@learn.hohschools.org";
+      zissue = "ghissue ziglang/zig";
     };
     initExtra = ''
       HISTSIZE=100000000
       function ? {
         w3m "https://ddg.gg/?q=$(echo $@)"
+      }
+      function sexit {
+        setsid -f "$1"; exit
+      }
+      function gr {
+        cd "$(git rev-parse --show-toplevel)"
       }
       if [ -n "$TMUX" ]; then
           tmux set -a window-active-style "bg=#1C1C1C"
@@ -155,6 +162,7 @@ in {
 
       if [ $TERM = "dumb" ]; then
           export PS1="% "
+          export NO_COLOR=1
       else
           # for starship prompt
           eval "$(starship init bash)"
@@ -192,9 +200,7 @@ in {
     enable = true;
     enableBashIntegration = true;
   };
-  programs.emacs = {
-    enable = true;
-  };
+  programs.emacs = { enable = true; };
 
   home.file = {
     ".tmux.conf".source = ./tmux.conf;

@@ -1,9 +1,4 @@
+#!/bin/sh
 
-cd /home/jacob/dev 
-
-if [ -f "/home/jacob/env/$1.nix" ]; then
-  cd ~/dev/$1
-  nix-shell ~/env/$1.nix
-else
-  cd ~/dev/$1
-fi
+cd "/home/jacob/dev/$1"
+exec bash

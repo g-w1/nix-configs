@@ -2,12 +2,22 @@
   // "coc.preferences.jumpCommand": "tabe",
    "languageserver": {
        "zls" : {
-           "command": "/home/jacob/dev/zls/zig-cache/bin/zls",
+           "command": "/home/jacob/.local/bin/zls",
            "filetypes": ["zig"]
+       },
+       "rust-analyzer" : {
+           "command": "rust-analyzer",
+           "filetypes": ["rust"]
        },
        "clangd": {
          "command": "clangd",
          "filetypes": ["c", "cpp"]
-       }
+       },
+      "haskell": {
+        "command": "haskell-language-server-wrapper",
+        "args": ["--lsp"],
+        "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
+        "filetypes": ["haskell", "lhaskell"]
+      }
   }
 }

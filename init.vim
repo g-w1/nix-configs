@@ -64,12 +64,16 @@ set shortmess+=c
 nmap <silent> gd <Plug>(coc-definition)
 " rename
 nmap <silent> <leader>cr <Plug>(coc-rename)
+nmap <silent> <leader>ca :CocAction<CR>
 " go to errors next
 nmap <silent> <leader>e <Plug>(coc-diagnostic-next)
-nmap <silent> <leader>e <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>E <Plug>(coc-diagnostic-prev)
 " better brackets
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
       \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+let g:coc_snippet_next = "<TAB>"
+let g:coc_snippet_prev = "c-b"
 
 " git stuff
 nnoremap <leader>gg :Git<CR>
@@ -121,7 +125,7 @@ set mouse=a
 	set smartcase
 	nnoremap <esc> :nohlsearch<cr>a<ESC>
 " terminals
-	nnoremap <leader>ot :sp<cr>:terminal<cr>
+	nnoremap <leader>ot :sp<cr>:terminal<cr>:resize 10<cr>
 	nnoremap <leader>oT :terminal<cr>
 
 " tabs
@@ -234,7 +238,7 @@ set t_ZR=^[[23m
 highlight Comment cterm=italic
 """"""""" colortheme
 colorscheme base16-gruvbox-dark-soft
-let g:airline_theme='lucius'
+let g:airline_theme='sol'
 set termguicolors
 " no background
 hi Normal guibg=NONE ctermbg=NONE
