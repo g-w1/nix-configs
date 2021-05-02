@@ -14,6 +14,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernel.sysctl = {
+      "kernel.perf_event_paranoid" = 1;
+  };
+
   # clean /tmp on boot by mounting in tmpfs
   boot.tmpOnTmpfs = true;
 
