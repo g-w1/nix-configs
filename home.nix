@@ -23,6 +23,9 @@ in {
     aerc
     amfora # gemini
     file
+    zip
+    unzip
+    xxd
 
     # Development
     neovim
@@ -30,6 +33,7 @@ in {
     screen
     fzf
     nodejs
+    sbcl
     python38
     rustup
     alacritty
@@ -37,6 +41,7 @@ in {
     ruby
     kakoune
     parinfer-rust
+    ocamlformat
     # plan9port # NICE
 
     # language servers
@@ -97,6 +102,8 @@ in {
     historyFileSize = 100000000;
     shellAliases = {
       cp = "cp -iv";
+      xd = "xxd";
+      dev = "exec dev";
       sa = "screen -x";
       mv = "mv -iv";
       rm = "rm -v";
@@ -118,6 +125,7 @@ in {
       gacp = "git add . ; git commit -a ; git push";
       g = "git";
       gis = "git status";
+      gd = "git diff";
       gac = "git add . ; git commit -a";
       diff = "diff --color=auto";
       ka = "killall";
@@ -148,7 +156,12 @@ in {
         w3m "https://ddg.gg/?q=$(echo $@)"
       }
       function sexit {
-        setsid -f "$1"; exit
+        setsid -f $@
+        sleep 1
+        ps -A | grep $1 && exit
+      }
+      function launch {
+        setsid -f $@
       }
       function gr {
         cd "$(git rev-parse --show-toplevel)"
@@ -163,12 +176,27 @@ in {
       if [ $TERM = "dumb" ]; then
           export PS1="% "
           export NO_COLOR=1
+          function % {
+            $@
+          }
       else
           # for starship prompt
           eval "$(starship init bash)"
+          function ❯ {
+            $@
+          }
       fi
       if [ -n "$INSIDE_EMACS" ]; then
       	export EDITOR=emacsclient
+      fi
+      ## If inside Acme...
+      if [ "$winid" ]; then
+        export EDITOR=E
+        ## ... then patch the `cd` command
+        _cd () {
+          \cd "$@" && awd
+        }
+        alias cd=_cd
       fi
       work ls
       set -h
@@ -194,6 +222,10 @@ in {
       merge = { conflictstyle = "diff3"; };
     };
   };
+  programs.opam = {
+    enable = true;
+    enableBashIntegration = true;
+  };
 
   programs.tmux.enable = true;
   programs.direnv = {
@@ -204,6 +236,7 @@ in {
 
   home.file = {
     ".tmux.conf".source = ./tmux.conf;
+    ".screenrc".source = ./screenrc;
     ".xinitrc".source = ./xinitrc;
     ".profile".source = ./profile;
     ".local/bin".source = ./scripts;

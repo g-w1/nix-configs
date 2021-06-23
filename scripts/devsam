@@ -6,7 +6,6 @@ repo=$(ls /home/jacob/dev | dmenu)
 export SHELL=rc
 
 cd /home/jacob/dev/$repo
-9 plumber
 if [ -f "/home/jacob/env/$repo.nix" ]; then
   nix-shell "/home/jacob/env/$repo.nix" --run "9 acme /home/jacob/dev/$repo/"
 elif [ -f "/home/jacob/dev/$repo/shell.nix" ]; then

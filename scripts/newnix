@@ -1,0 +1,19 @@
+#!/usr/bin/env -S sbcl --script
+
+(defun write-shell-nix ()
+ (with-open-file (file "./shell.nix"
+                      :direction :output
+                      :if-exists :supersede
+                      :if-does-not-exist :create)
+   (format file "{ pkgs ? import <nixpkgs> {} }: with pkgs; mkShell { buildInputs = [~%];}~%")))
+
+(defun write-envrc ()
+ (with-open-file (file "./.envrc"
+                      :direction :output
+                      :if-exists :supersede
+                      :if-does-not-exist :create)
+   (format file "use nix~%")))
+
+(write-shell-nix)
+(write-envrc)
+(write-line "wrote shell.nix and .envrc")

@@ -79,23 +79,23 @@ let g:coc_snippet_prev = "c-b"
 nnoremap <leader>gg :Git<CR>
 
 " terminal mode
-augroup terminal_settings
-  autocmd!
+" augroup terminal_settings
+"   autocmd!
 
-  autocmd BufWinEnter,WinEnter term://* startinsert
-  autocmd BufLeave term://* stopinsert
+"   autocmd BufWinEnter,WinEnter term://* startinsert
+"   autocmd BufLeave term://* stopinsert
 
 
-  au TermOpen * tnoremap <Esc> <c-\><c-n>
-  au FileType fzf tunmap <Esc>
+"   au TermOpen * tnoremap <Esc> <c-\><c-n>
+"   au FileType fzf tunmap <Esc>
 
-  " Ignore various filetypes as those will close terminal automatically
-  " Ignore fzf, ranger, coc
-  autocmd TermClose term://*
-        \ if (expand('<afile>') !~ "fzf") && (expand('<afile>') !~ "ranger") && (expand('<afile>') !~ "coc") |
-        \   call nvim_input('<CR>')  |
-        \ endif
-augroup END
+"   " Ignore various filetypes as those will close terminal automatically
+"   " Ignore fzf, ranger, coc
+"   autocmd TermClose term://*
+"         \ if (expand('<afile>') !~ "fzf") && (expand('<afile>') !~ "ranger") && (expand('<afile>') !~ "coc") |
+"         \   call nvim_input('<CR>')  |
+"         \ endif
+" augroup END
 
 " ezzzzzzzzzz (i made this lang up)
 autocmd BufNewFile,BufRead *.ez set commentstring=[%s]
@@ -127,9 +127,11 @@ set mouse=a
 " terminals
 	nnoremap <leader>ot :sp<cr>:terminal<cr>:resize 10<cr>
 	nnoremap <leader>oT :terminal<cr>
+" better Y
+    nnoremap Y y$
 
 " tabs
-set tabstop=2
+set tabstop=4
 set shiftwidth=2
 set expandtab
 set noemoji
@@ -157,6 +159,7 @@ set autoread
 	autocmd FileType mail map j gj
 	autocmd FileType mail map k gk
 
+  autocmd FileType c set noexpandtab
 " writing:
 	map <leader>g :Goyo<CR>
 	autocmd! User GoyoEnter Limelight; hi Normal guibg=NONE ctermbg=NONE
@@ -181,21 +184,8 @@ nnoremap <leader>bk :bd<cr>
 " Replace ex mode with gq
 	map Q gq
 
-" Check file in shellcheck:
-	map <leader>s :!clear && shellcheck %<CR>
-
-" Open my bibliography file in split
-	" map <leader>b :vsp<space>$BIB<CR>
-	map <leader>r :vsp<space>$REFER<CR>
-
 " Replace all is aliased to S.
 	nnoremap S :%s//g<Left><Left>
-
-" Compile document, be it groff/LaTeX/markdown/etc.
-	map <leader>c :w! \| :!compiler <c-r>%<CR>
-"formatting
-	map <leader>f :w! \| :!formatter <c-r>%<CR>:e<CR>
-
 
 " Open corresponding .pdf/.html or preview
 	map <leader>p :!opout <c-r>%<CR><CR>

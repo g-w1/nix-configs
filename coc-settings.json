@@ -9,10 +9,6 @@
            "command": "rust-analyzer",
            "filetypes": ["rust"]
        },
-       "clangd": {
-         "command": "clangd",
-         "filetypes": ["c", "cpp"]
-       },
       "haskell": {
         "command": "haskell-language-server-wrapper",
         "args": ["--lsp"],
