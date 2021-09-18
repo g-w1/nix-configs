@@ -27,6 +27,8 @@ in {
     unzip
     xxd
     slop
+    wmctrl
+    xmenu
 
     # Development
     neovim

@@ -23,6 +23,7 @@ if [[ -z "${NOT_USE_SHOD}" ]]; then
             ;;
     esac
 	sxhkd -c ~/.config/sxhkd/shodsxhkdrc&
+	~/dev/xclickroot/xclickroot -r shodmenu&
 	exec ~/dev/shod2/shod
 else
   exec bspwm

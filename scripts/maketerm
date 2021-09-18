@@ -5,7 +5,7 @@ hglyph=16       # glyph height, in pixels
 border=7        # border width, in pixels
 title=17        # titlebar height, in pixels
 
-slop | tr 'x+' ' ' | {
+slop -n | tr 'x+' ' ' | {
 	read w h x y
 	w=$(( ( w - ( border / wglyph ) ) / wglyph ))
 	h=$(( ( ( h - ( border / hglyph ) ) / hglyph ) - ( title / hglyph ) ))

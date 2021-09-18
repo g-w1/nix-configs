@@ -1,0 +1,7 @@
+#!/bin/sh
+
+focus=$(wmctrl -l | awk '{ print substr( $0, index( $0 , $4 )) "\t~/dev/shod2/shodc focus " $1 }')
+xmenu <<EOF | sh &
+New	maketerm
+$focus
+EOF
