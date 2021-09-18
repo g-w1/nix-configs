@@ -234,3 +234,6 @@ set termguicolors
 hi Normal guibg=NONE ctermbg=NONE
 """"""""""""" misc looks
 set cursorline
+" ocaml indent ????
+" let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+" autocmd FileType ocaml source g:opamshare . '/ocp-indent/vim/indent/ocaml.vim'

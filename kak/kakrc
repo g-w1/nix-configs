@@ -91,8 +91,6 @@ lsp-auto-signature-help-enable
 map global goto 'n' '<esc>: lsp-find-error --include-warnings<ret>' -docstring 'next error'
 map global goto 'p' '<esc>: lsp-find-error --previous --include-warnings <ret>' -docstring 'previous error'
 
-
+set global lsp_hover_max_lines 20 # update 40 with your preference of how many lines to cut
 ## for lsp log
 #set-option global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
-
-

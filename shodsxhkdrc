@@ -1,0 +1,90 @@
+# The Simple X Hotkey Daemon is the program used by LARBS to map most of the
+# dwm-independent commands.  This file is pretty readable, so I'll let you read
+# it.
+
+# Basic binds
+super + Return
+	$TERMINAL #-e tmux
+super + shift + Return
+	$TERMINAL -e tmux
+super + d
+	dmenu_run
+super + v
+	devacme
+super + shift + w
+	firefox
+super + w
+	brave
+super + a
+	$TERMINAL -e pulsemixer
+super + n
+	$TERMINAL -e newsboat -q
+# Increase volume
+super + equal
+	pamixer --allow-boost -i 10
+# Decrease volume
+super + minus
+	pamixer --allow-boost -d 10
+
+# Et cetera...
+super + grave
+	dmenuunicode
+super + Scroll_Lock
+	killall screenkey || screenkey
+super + Insert
+	showclip
+super + BackSpace
+	sysactbsp
+
+# Recording
+# Take screenshot
+Print
+	maim pic-full-$(date '+%y%m%d-%H%M-%S').png
+# Pick screenshot type
+shift + Print
+	maimpick
+super + p
+	maimpick
+
+XF86PowerOff
+	prompt "Shutdown computer?" "sudo -A shutdown -h now"
+XF86Calculator
+	$TERMINAL -e bc
+XF86Sleep
+	prompt 'Hibernate computer?' 'sudo -A zzz'
+XF86WWW
+	$BROWSER
+XF86DOS
+	$TERMINAL
+XF86ScreenSaver
+	mpc pause; pauseallmpv; i3lock -e -f -c 1d2021; xset dpms force off
+XF86TaskPane
+	$TERMINAL -e htop
+XF86Mail
+	$TERMINAL -e neomutt
+XF86MyComputer
+	$TERMINAL -e $FILE /
+
+# Function keys
+super + shift + F1
+	grep LARBSWELCOME ~/.xprofile && ( sed -i "/LARBSWELCOME/d" ~/.xprofile && notify-send "LARBS welcome message" "Welcome message disabled. Press Super+Shift+F1 again to reverse." ) || ( echo "notify-send -i "${XDG_DATA_HOME:-$HOME/.local/share}/larbs/larbs.png" \"Welcome to LARBS\" \"Press super+F1 for the help menu.\" # LARBSWELCOME" >> ~/.xprofile && notify-send "LARBS welcome message" "Welcome message re-enabled." )
+# Show readme
+# super + F1
+# 	groff -mom ${XDG_DATA_HOME:-$HOME/.local/share}/larbs/readme.mom -Tpdf | zathura -
+# F2 restarts either dwm or i3 and is bound in each.
+# Change display
+super + F3
+	displayselect
+# Hibernate
+# super + F4
+# 	prompt 'Hibernate computer?' 'sudo -A zzz -Z'
+super + F5 is unbound.
+# Start torrent daemon/open interface
+super + F6
+	torwrap
+# toggle torrent daemon
+super + F7
+	td-toggle
+# Mount a USB drive or Android device
+super + {F9,F10}
+	{dmenumount,dmenuumount}

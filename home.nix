@@ -26,6 +26,7 @@ in {
     zip
     unzip
     xxd
+    slop
 
     # Development
     neovim
@@ -36,6 +37,7 @@ in {
     sbcl
     python38
     rustup
+    go
     alacritty
     foot
     ruby
@@ -93,6 +95,7 @@ in {
     wmname # for java stuff
     gnutls # irc in emacs!
     w3m
+    anki
     # mu isync # mail in emacs
     ispell # spelling in emacs
   ];
@@ -101,6 +104,7 @@ in {
     enable = true;
     historyFileSize = 100000000;
     shellAliases = {
+      gemini="amfora";
       cp = "cp -iv";
       xd = "xxd";
       dev = "exec dev";
@@ -144,7 +148,7 @@ in {
       tl = "tmux ls";
       ca = "cargo";
       cfnix = "cd ~/.config/nixpkgs&&$EDITOR home.nix";
-      clbin = "curl -F 'clbin=<-' https://clbin.com";
+      clbin = "curl --data-binary @- https://paste.rs/";
       pastebin = "xclip -selection clipboard -o | clbin";
       mu-init =
         "mu init --maildir=~/.mail/ --my-address=jacoblevgw@gmail.com --my-address=goldman-wetzlerj24@learn.hohschools.org";
@@ -176,6 +180,9 @@ in {
       if [ $TERM = "dumb" ]; then
           export PS1="% "
           export NO_COLOR=1
+          alias ls="9 ls"
+          alias lc="9 lc"
+          alias rg="rg --vimgrep"
           function % {
             $@
           }
@@ -191,12 +198,15 @@ in {
       fi
       ## If inside Acme...
       if [ "$winid" ]; then
-        export EDITOR=E
+        export EDITOR=editinacme
         ## ... then patch the `cd` command
         _cd () {
           \cd "$@" && awd
         }
         alias cd=_cd
+      fi
+      if [ -n "$TMUX" ]; then
+        export EDITOR=kak
       fi
       work ls
       set -h
@@ -256,6 +266,7 @@ in {
     "zathura/zathurarc".source = ./zathurarc;
     "bspwm/bspwmrc".source = ./bspwmrc;
     "sxhkd/sxhkdrc".source = ./sxhkdrc;
+    "sxhkd/shodsxhkdrc".source = ./shodsxhkdrc;
     "worktodo/worktodo.toml".source = ./worktodo.toml;
     "kak".source = ./kak;
     "kak".recursive = true;

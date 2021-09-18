@@ -14,6 +14,11 @@
         "args": ["--lsp"],
         "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
         "filetypes": ["haskell", "lhaskell"]
+      },
+      "ocaml":{
+        "command": "ocamllsp",
+        "filetypes": ["ocaml"],
+        "rootPatterns": ["dune", "dune-project"]
       }
   }
 }

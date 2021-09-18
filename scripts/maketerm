@@ -1,0 +1,14 @@
+#!/bin/sh
+
+wglyph=7        # glyph width, in pixels
+hglyph=16       # glyph height, in pixels
+border=7        # border width, in pixels
+title=17        # titlebar height, in pixels
+
+slop | tr 'x+' ' ' | {
+	read w h x y
+	w=$(( ( w - ( border / wglyph ) ) / wglyph ))
+	h=$(( ( ( h - ( border / hglyph ) ) / hglyph ) - ( title / hglyph ) ))
+	exec alacritty -d $w $h --position $x $y
+}
+

@@ -1,5 +1,6 @@
 #!/bin/sh
 
+
 setxkbmap -variant colemak
 sxhkd&
 setxkbmap -variant colemak
@@ -24,6 +25,7 @@ case $(hostname) in
 	*)
 		;;
 esac
+
 
 launch_polybar&
 

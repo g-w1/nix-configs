@@ -7,7 +7,7 @@ export PATH="$PATH:$HOME/.skim/bin"
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 
 # Default programs:
-export EDITOR="nvim"
+export EDITOR="kak"
 export TERMINAL="alacritty"
 export BROWSER="brave"
 export READER="zathura"
@@ -59,6 +59,8 @@ esac
 
 export NIXPKGS_ALLOW_UNFREE=1
 export PATH="/home/jacob/.local/share/cargo/bin:$PATH"
+export PATH="/home/jacob/.local/share/go/bin:$PATH"
 export PATH="/home/jacob/.gem/ruby/2.7.0/bin:$PATH"
 export PATH="/home/jacob/.emacs.d/bin":$PATH
 export GIT_PAGER=cat
+9 plumber
