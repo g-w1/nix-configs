@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# takes file as $1, intended extension as $2, and converts it, removing orig file if it went well
+
+ext=$1
+file=$2
+
+echo "converting $file to ${file%.*}$ext"
+
+ffmpeg -i "$file" "${file%.*}$ext" && rm -v "$file"

@@ -34,7 +34,7 @@ super + Scroll_Lock
 super + Insert
 	showclip
 super + BackSpace
-	sysactbsp
+	sysactshod
 
 # Recording
 # Take screenshot

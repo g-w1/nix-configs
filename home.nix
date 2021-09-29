@@ -50,6 +50,7 @@ in {
 
     # language servers
     rust-analyzer
+    (import <nixos>{}).elixir_ls
     clang-tools
     python38Packages.python-language-server
     python38Packages.pyls-mypy
