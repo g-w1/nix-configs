@@ -7,7 +7,11 @@ let
   };
   work = (pkgs.callPackage ./work.nix { }).rootCrate.build;
 in {
+  home.username = "jacob";
+  home.homeDirectory = "/home/jacob";
+  home.stateVersion = "21.11";
   programs.home-manager.enable = true;
+  manual.manpages.enable = true;
   home.packages = with pkgs; [
     # cli tools
     exa
@@ -29,6 +33,12 @@ in {
     slop
     wmctrl
     xmenu
+    colorpicker
+    aspell
+    aspellDicts.en
+
+    # for pdfs
+    poppler_utils
 
     # Development
     neovim
@@ -37,30 +47,29 @@ in {
     fzf
     nodejs
     sbcl
-    python38
+    python310
+    python310Packages.python-lsp-server
     rustup
     go
     alacritty
     foot
     ruby
     kakoune
+    helix
     parinfer-rust
     ocamlformat
     # plan9port # NICE
 
     # language servers
-    rust-analyzer
-    (import <nixos>{}).elixir_ls
+    # rust-analyzer
+    # (import <nixos>{}).elixir_ls
     clang-tools
-    python38Packages.python-language-server
-    python38Packages.pyls-mypy
-    kak-lsp
 
     # Media
-    brave
     firefox
     youtube-dl
     musescore
+    easytag
     lame
     kdenlive
     jq
@@ -73,7 +82,6 @@ in {
     xclip
     xsel
     zathura
-    nerdfonts
     slock
     ffmpeg
     feh
@@ -98,9 +106,29 @@ in {
     wmname # for java stuff
     gnutls # irc in emacs!
     w3m
-    anki
+    # anki
+    (pkgs.callPackage ./anki-bin-2.1.54.nix { })
     # mu isync # mail in emacs
     ispell # spelling in emacs
+
+	# these needed for xournalpp
+	xournalpp
+	gnome.adwaita-icon-theme
+	shared-mime-info
+	texlive.combined.scheme-medium
+
+  # for plan9
+  (pkgs.callPackage ./drawterm.nix {})
+
+
+	# gotta need this
+	audacity
+	calibre
+	zotero
+	zoom-us
+
+	# for greyscale
+	picom
   ];
 
   programs.bash = {
@@ -157,6 +185,7 @@ in {
         "mu init --maildir=~/.mail/ --my-address=jacoblevgw@gmail.com --my-address=goldman-wetzlerj24@learn.hohschools.org";
       zissue = "ghissue ziglang/zig";
     };
+    profileExtra = (builtins.readFile ./profile);
     initExtra = ''
       HISTSIZE=100000000
       function ? {
@@ -209,7 +238,7 @@ in {
         alias cd=_cd
       fi
       if [ -n "$TMUX" ]; then
-        export EDITOR=kak
+        export EDITOR=hx
       fi
       work ls
       set -h
@@ -219,7 +248,6 @@ in {
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.gnome3.gnome_themes_standard;
       name = "Adwaita Dark";
     };
   };
@@ -251,7 +279,6 @@ in {
     ".tmux.conf".source = ./tmux.conf;
     ".screenrc".source = ./screenrc;
     ".xinitrc".source = ./xinitrc;
-    ".profile".source = ./profile;
     ".local/bin".source = ./scripts;
     ".local/bin".recursive = true;
     ".local/share/emoji".source = ./emoji;
@@ -259,6 +286,7 @@ in {
     ".config/starship.toml".source = ./starship.toml;
     ".npmrc".source = ./npmrc;
     ".mbsyncrc".source = ./mbsyncrc;
+    ".aspell.conf".text = "data-dir ${pkgs.aspell}/lib/aspell";
   };
 
   xdg.configFile = {
@@ -276,12 +304,12 @@ in {
     "kak-lsp/kak-lsp.toml".source = ./kak-lsp.toml;
   };
 
-  services.polybar = {
-    enable = true;
-    package = mypolybar;
-    config = ./polybar;
-    script = ''
-      launch_polybar&
-    '';
-  };
+  # services.polybar = {
+  #   enable = true;
+  #   package = mypolybar;
+  #   config = ./polybar;
+  #   script = ''
+  #     launch_polybar&
+  #   '';
+  # };
 }

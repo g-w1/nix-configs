@@ -5,7 +5,7 @@
 cmds="\
 lock screen	slock
 leave shod	kill -TERM $(pidof -s shod)
-reboot		sudo -A reboot
+reboot		reboot
 shutdown	sudo -A shutdown -h now
 "
 

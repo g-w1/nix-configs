@@ -1,12 +1,15 @@
 # ui stuff
-colorscheme gruvbox
+colorscheme gruvbox-dark
 add-highlighter global/ number-lines
 add-highlighter global/ wrap
 add-highlighter global/ show-matching
 
 # clipboard: leader {y,p}
-map global user p -docstring 'paste from clipboard' '!xsel -bo<ret>uU'
-map global user y -docstring 'copy to clipboard' '<a-|>xsel -bi<ret>'
+# map global user p -docstring 'paste from clipboard' '!xsel -bo<ret>uU'
+# map global user y -docstring 'copy to clipboard' '<a-|>xsel -bi<ret>'
+hook global RegisterModified '"' %{ nop %sh{
+      printf %s "$kak_main_reg_dquote" | xsel --input --clipboard
+}}
 
 # fzf stuff
 source "~/.config/nixpkgs/kak/plugins/fzf.kak/rc/fzf.kak"
@@ -21,9 +24,14 @@ require-module fzf
 map global normal '<c-t>' ': fzf-vcs<ret>'
 
 # janet
-source "~/.config/nixpkgs/kak/plugins/janet.kak/rc/janet.kak"
-source "~/.config/nixpkgs/kak/plugins/surround.kak"
-map global user -docstring 'Janet mode' j ': enter-user-mode janet<ret>'
+# source "~/.config/nixpkgs/kak/plugins/janet.kak/rc/janet.kak"
+# source "~/.config/nixpkgs/kak/plugins/surround.kak"
+# map global user -docstring 'Janet mode' j ': enter-user-mode janet<ret>'
+
+# latex compile
+hook global WinSetOption filetype=latex %{
+        map window normal <c-l> %{: w<ret>: nop %sh{pdflatex %val{buffile} && zathura %val{buffile} } }
+ }
 
 
 # search
@@ -62,6 +70,9 @@ hook global WinSetOption filetype=(rust|zig|js|python) %{
 }
 
 
+hook global WinSetOption filetype=(markdown) %{
+    hook window BufWritePre .* spell
+}
 
 hook global WinSetOption filetype=zig %{
     set-option buffer formatcmd 'zig fmt --stdin'
@@ -94,3 +105,4 @@ map global goto 'p' '<esc>: lsp-find-error --previous --include-warnings <ret>' 
 set global lsp_hover_max_lines 20 # update 40 with your preference of how many lines to cut
 ## for lsp log
 #set-option global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
+

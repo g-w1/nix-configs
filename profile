@@ -7,8 +7,8 @@ export PATH="$PATH:$HOME/.skim/bin"
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 
 # Default programs:
-export EDITOR="kak"
-export TERMINAL="alacritty"
+export EDITOR="hx"
+export TERMINAL="nixGL alacritty"
 export BROWSER="brave"
 export READER="zathura"
 export XKB_DEFAULT_LAYOUT="us(colemak)" river
@@ -63,4 +63,4 @@ export PATH="/home/jacob/.local/share/go/bin:$PATH"
 export PATH="/home/jacob/.gem/ruby/2.7.0/bin:$PATH"
 export PATH="/home/jacob/.emacs.d/bin":$PATH
 export GIT_PAGER=cat
-9 plumber
+export GTK_THEME=Adwaita:dark

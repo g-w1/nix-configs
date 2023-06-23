@@ -47,15 +47,15 @@
   };
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
-    wget neovim curl exa gitAndTools.gitFull
+    wget neovim curl exa gitAndTools.gitFull alsaPlugins
   ];
 
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  services.flatpak.enable = true;
-  xdg.portal.enable = true;
+  # services.flatpak.enable = true;
+  # xdg.portal.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -67,8 +67,22 @@
   services.printing.enable = true;
   services.avahi.enable = true;
 
+  nix.settings.experimental-features = ["nix-command"];
+
   # Enable sound.
   sound.enable = true;
+  sound.extraConfig = ''
+pcm.!default {
+    type pulse
+}
+ctl.!default {
+    type pulse
+}
+
+pcm_type.pulse {
+    lib "${pkgs.alsaPlugins}/lib/alsa-lib/libasound_module_pcm_pulse.so"
+}
+  '';
   hardware.pulseaudio.enable = true;
 
   # Enable the X11 windowing system.
@@ -90,7 +104,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jacob = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "video" "adbusers" ]; # Enable ‘sudo’ for the user.
   };
 
   # This value determines the NixOS release from which the default
@@ -102,12 +116,18 @@
   system.stateVersion = "20.09"; # Did you read the comment?
 
   # add slock to the oom killers so I can actually use
-  security.wrappers.slock.source = "${pkgs.slock.out}/bin/slock";
+  programs.slock.enable = true;
 
   # unfree software
   nixpkgs.config.allowUnfree = true;
   networking.extraHosts =
   ''
+  127.0.0.1 reddit.com
+  127.0.0.1 www.reddit.com
+  127.0.0.1 old.reddit.com
+  127.0.0.1 twitter.com
+  127.0.0.1 www.twitter.com
   '';
 
+  programs.adb.enable = true;
 }

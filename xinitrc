@@ -16,7 +16,7 @@ if [[ -z "${NOT_USE_SHOD}" ]]; then
     case $(hostname) in
         dell)
             if [ $(xrandr --query | grep " connected" | cut -d" " -f1 | grep HDMI) ]; then
-              xrandr --output HDMI-1 --right-of DP-3
+              xrandr --output HDMI-1 --above DP-3
             fi
             ;;
         *)
@@ -24,7 +24,7 @@ if [[ -z "${NOT_USE_SHOD}" ]]; then
     esac
 	sxhkd -c ~/.config/sxhkd/shodsxhkdrc&
 	~/dev/xclickroot/xclickroot -r shodmenu&
-	exec ~/dev/shod2/shod
+	exec ~/dev/shod2/shod -c
 else
   exec bspwm
 fi

@@ -57,9 +57,9 @@ roots = ["requirements.txt", "setup.py", ".git", ".hg"]
 command = "pyls"
 offset_encoding = "utf-8"
 
-[language.python.initialization_options.plugins.pyls_mypy]
-enabled = true
-live_mode = true
+# [language.python.initialization_options.plugins.pyls_mypy]
+# enabled = true
+# live_mode = true
 
 [language.go]
 filetypes = ["go"]
@@ -70,3 +70,8 @@ settings_section = "gopls"
 [language.go.settings.gopls]
 # See https://github.com/golang/tools/blob/master/gopls/doc/settings.md
 # # "build.buildFlags" = []
+
+[language.elixir]
+filetypes = ["elixir"]
+roots = ["mix.exs", "mix.lock", ".git"]
+command = "elixir-ls"
