@@ -178,7 +178,7 @@ in {
       ta = "tmux a";
       tl = "tmux ls";
       ca = "cargo";
-      cfnix = "cd ~/.config/nixpkgs&&$EDITOR home.nix";
+      cfnix = "cd ~/.config/home-manager&&$EDITOR home.nix";
       clbin = "curl --data-binary @- https://paste.rs/";
       pastebin = "xclip -selection clipboard -o | clbin";
       mu-init =

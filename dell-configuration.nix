@@ -67,7 +67,7 @@
   services.printing.enable = true;
   services.avahi.enable = true;
 
-  nix.settings.experimental-features = ["nix-command"];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Enable sound.
   sound.enable = true;
