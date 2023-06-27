@@ -1,10 +1,10 @@
 { config, pkgs, ... }:
 
 let
-  mypolybar = pkgs.polybar.override {
-    mpdSupport = true;
-    pulseSupport = true;
-  };
+  # mypolybar = pkgs.polybar.override {
+  #   mpdSupport = true;
+  #   pulseSupport = true;
+  # };
   work = (pkgs.callPackage ./work.nix { }).rootCrate.build;
 in {
   home.username = "jacob";
@@ -46,6 +46,7 @@ in {
     screen
     fzf
     nodejs
+    nodePackages.prettier
     sbcl
     python310
     python310Packages.python-lsp-server
@@ -283,6 +284,8 @@ in {
     ".local/bin".recursive = true;
     ".local/share/emoji".source = ./emoji;
     ".config/nvim/coc-settings.json".source = ./coc-settings.json;
+    ".config/helix/".source = ./helix-conf;
+    ".config/helix/".recursive = true;
     ".config/starship.toml".source = ./starship.toml;
     ".npmrc".source = ./npmrc;
     ".mbsyncrc".source = ./mbsyncrc;
