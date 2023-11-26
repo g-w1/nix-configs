@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+
+# mostly generated using ChatGPT 😼
+import subprocess
+import sys
+import os
+
+
+def create_latex_doc(pdf1, pdf2, output_file="output.tex"):
+    latex_template = r"""
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (imageA) at (0,0) {
+        \includegraphics[scale=.5]{{%s}}
+    };
+    \node[anchor=north west, xshift=-12pt, font=\bfseries\sffamily] at (imageA.north west) {A};
+    
+    \node[anchor=south west,inner sep=0, xshift=0] (imageB) at (imageA.south east) {
+        \includegraphics[scale=.5]{{%s}}
+    };
+    \node[anchor=north west, xshift=-12pt, font=\bfseries\sffamily] at (imageB.north west) {B};
+\end{tikzpicture}
+\end{document}
+""" % (
+        pdf1,
+        pdf2,
+    )
+
+    with open(output_file, "w") as file:
+        file.write(latex_template)
+
+
+def compile_pdf(tex_file):
+    try:
+        pdf_output = tex_file.replace("tex", "pdf")
+        subprocess.run(["tectonic", tex_file], check=True)
+        print(f"output in `{pdf_output}`")
+    except subprocess.CalledProcessError as e:
+        print(f"An error occurred while compiling the LaTeX document: {e}")
+
+
+if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print("Usage: python script.py <path_to_pdf1> <path_to_pdf2>")
+        sys.exit(1)
+
+    pdf1, pdf2 = sys.argv[1], sys.argv[2]
+    create_latex_doc(pdf1, pdf2)
+    compile_pdf("output.tex")
