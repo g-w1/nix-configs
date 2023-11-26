@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
-
-# mostly generated using ChatGPT 😼
+import os
 import subprocess
 import sys
-import os
 
 
-def create_latex_doc(pdf1, pdf2, output_file="output.tex"):
+def create_latex_doc(pdf1, pdf2, output_tex_file):
     latex_template = r"""
-\documentclass{article}
+\documentclass{standalone}
 \usepackage{graphicx}
 \usepackage{tikz}
 \begin{document}
@@ -29,24 +27,40 @@ def create_latex_doc(pdf1, pdf2, output_file="output.tex"):
         pdf2,
     )
 
-    with open(output_file, "w") as file:
+    with open(output_tex_file, "w") as file:
         file.write(latex_template)
 
 
-def compile_pdf(tex_file):
+def compile_pdf(tex_file, output_pdf):
     try:
-        pdf_output = tex_file.replace("tex", "pdf")
         subprocess.run(["tectonic", tex_file], check=True)
-        print(f"output in `{pdf_output}`")
+        os.remove(tex_file)
+        print(f"PDF generated: {output_pdf}")
     except subprocess.CalledProcessError as e:
         print(f"An error occurred while compiling the LaTeX document: {e}")
 
 
+def get_output_filenames(custom_name=None):
+    if custom_name and custom_name.endswith(".pdf"):
+        output_pdf = custom_name
+        output_tex = custom_name.replace(".pdf", ".tex")
+    else:
+        output_tex = "output.tex" if not custom_name else custom_name + ".tex"
+        output_pdf = output_tex.replace(".tex", ".pdf")
+    return output_tex, output_pdf
+
+
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print("Usage: python script.py <path_to_pdf1> <path_to_pdf2>")
+    if len(sys.argv) < 3 or len(sys.argv) > 4:
+        print(
+            "Usage: python script.py <path_to_pdf1> <path_to_pdf2> [output_file_name.pdf]"
+        )
         sys.exit(1)
 
     pdf1, pdf2 = sys.argv[1], sys.argv[2]
-    create_latex_doc(pdf1, pdf2)
-    compile_pdf("output.tex")
+    output_tex, output_pdf = get_output_filenames(
+        sys.argv[3] if len(sys.argv) == 4 else None
+    )
+
+    create_latex_doc(pdf1, pdf2, output_tex)
+    compile_pdf(output_tex, output_pdf)

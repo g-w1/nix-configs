@@ -9,6 +9,6 @@ slop -n | tr 'x+' ' ' | {
 	read w h x y
 	w=$(( ( w - ( border / wglyph ) ) / wglyph ))
 	h=$(( ( ( h - ( border / hglyph ) ) / hglyph ) - ( title / hglyph ) ))
-	exec alacritty -d $w $h --position $x $y
+	exec $TERMINAL -d $w $h --position $x $y
 }
 
